@@ -13,17 +13,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{47ADEFEC-E64F-421A-9A7E-50E9BE22EDEE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PackageDelivery.Application", "PackageDelivery.Application\PackageDelivery.Application.csproj", "{A50D03F8-A1DD-4357-A334-0FC7CD0FB4A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackageDelivery.Application", "PackageDelivery.Application\PackageDelivery.Application.csproj", "{A50D03F8-A1DD-4357-A334-0FC7CD0FB4A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PackageDelivery.Domain", "PackageDelivery.Domain\PackageDelivery.Domain.csproj", "{8DC0267C-85FA-42E0-9857-8C86C30C5435}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackageDelivery.Domain", "PackageDelivery.Domain\PackageDelivery.Domain.csproj", "{8DC0267C-85FA-42E0-9857-8C86C30C5435}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PackageDelivery.Persistence", "PackageDelivery.Persistence\PackageDelivery.Persistence.csproj", "{77FD5284-8879-4D02-9F05-C01DF6BEFBB1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackageDelivery.Persistence", "PackageDelivery.Persistence\PackageDelivery.Persistence.csproj", "{77FD5284-8879-4D02-9F05-C01DF6BEFBB1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PackageDelivery.Persistence.Tests", "PackageDelivery.Persistence.Tests\PackageDelivery.Persistence.Tests.csproj", "{B30864C1-C69F-44B6-81E2-8B12BA42DD34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackageDelivery.Persistence.Tests", "PackageDelivery.Persistence.Tests\PackageDelivery.Persistence.Tests.csproj", "{B30864C1-C69F-44B6-81E2-8B12BA42DD34}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PackageDelivery.Api", "PackageDelivery.Api\PackageDelivery.Api.csproj", "{C6EA7543-AE77-4118-B617-A77D554AFFE7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackageDelivery.Api", "PackageDelivery.Api\PackageDelivery.Api.csproj", "{C6EA7543-AE77-4118-B617-A77D554AFFE7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PackageDelivery.Infrastructure", "PackageDelivery.Infrastructure\PackageDelivery.Infrastructure.csproj", "{BE95DEBB-C65B-43CF-8E7C-F0F6EC91DBE1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackageDelivery.Infrastructure", "PackageDelivery.Infrastructure\PackageDelivery.Infrastructure.csproj", "{BE95DEBB-C65B-43CF-8E7C-F0F6EC91DBE1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
