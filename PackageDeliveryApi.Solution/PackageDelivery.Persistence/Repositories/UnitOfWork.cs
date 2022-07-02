@@ -2,8 +2,6 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore.Storage;
 using PackageDelivery.Application.Contracts.Persistence;
-using PackageDelivery.Persistence;
-using PackageDelivery.Persistence.Repositories;
 using System.Security.Claims;
 
 namespace PackageDelivery.Persistence.Repositories
@@ -21,6 +19,8 @@ namespace PackageDelivery.Persistence.Repositories
         private IDeliveryRepository _deliveryRepository;
 
         private IPackageRepository _packageRepository;
+        private IDeliveryDeliveryAttributeRepository _deliveryDeliveryAttributeRepository;
+        private IDeliveryAttributeRepository _deliveryAttributeRepository;
 
         public UnitOfWork(PackageDeliveryDbContext context, IHttpContextAccessor httpContextAccessor, IMapper mapper)
         {
@@ -32,6 +32,10 @@ namespace PackageDelivery.Persistence.Repositories
         public IDeliveryRepository DeliveryRepository => _deliveryRepository ??= new DeliveryRepository(_context, _mapper);
 
         public IPackageRepository PackageRepository => _packageRepository ??= new PackageRepository(_context, _mapper);
+
+        public IDeliveryDeliveryAttributeRepository DeliveryDeliveryAttributeRepository => _deliveryDeliveryAttributeRepository ??= new DeliveryDeliveryAttributeRepository(_context, _mapper);
+
+        public IDeliveryAttributeRepository DeliveryAttributeRepository => _deliveryAttributeRepository ??= new DeliveryAttributeRepository(_context, _mapper);
 
         public async Task BeginTransactionAsync(CancellationToken cancellationToken = default)
         {

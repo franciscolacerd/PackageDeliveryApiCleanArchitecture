@@ -4,6 +4,8 @@
     {
         IDeliveryRepository DeliveryRepository { get; }
         IPackageRepository PackageRepository { get; }
+        IDeliveryDeliveryAttributeRepository DeliveryDeliveryAttributeRepository { get; }
+        IDeliveryAttributeRepository DeliveryAttributeRepository { get; }
 
         Task BeginTransactionAsync(CancellationToken cancellationToken = default);
 

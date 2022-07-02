@@ -41,6 +41,7 @@ namespace PackageDelivery.Domain
         public string? Eta { get; set; }
         public DateTime? PickingDate { get; set; }
         public DateTime? DeliveryDate { get; set; }
-        public virtual ICollection<Package> Packages { get; set; }
+        public virtual ICollection<Package> Packages { get; set; } = null!;
+        public virtual ICollection<DeliveryDeliveryAttribute> DeliveryDeliveryAttributes { get; set; }
     }
 }

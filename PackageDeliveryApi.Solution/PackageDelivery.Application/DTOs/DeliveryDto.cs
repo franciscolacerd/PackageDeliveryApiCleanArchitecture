@@ -1,4 +1,5 @@
 ﻿using PackageDelivery.Application.DTOs.Common;
+using PackageDelivery.Domain;
 
 namespace PackageDelivery.Application.DTOs
 {
@@ -41,6 +42,8 @@ namespace PackageDelivery.Application.DTOs
         public string? Eta { get; set; }
         public DateTime? PickingDate { get; set; }
         public DateTime? DeliveryDate { get; set; }
-        public virtual ICollection<PackageDto> Packages { get; set; }
+        public virtual ICollection<PackageDto> Packages { get; set; } = null!;
+
+        public virtual ICollection<DeliveryDeliveryAttributeDto> DeliveryDeliveryAttributes { get; set; }
     }
 }

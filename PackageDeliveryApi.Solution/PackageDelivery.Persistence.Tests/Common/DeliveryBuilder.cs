@@ -1,5 +1,6 @@
 ﻿using PackageDelivery.Application.Extensions;
 using PackageDelivery.Domain;
+using PackageDelivery.Domain.SmartEnums;
 
 namespace PackageDelivery.Persistence.Tests.Common
 {
@@ -89,6 +90,48 @@ namespace PackageDelivery.Persistence.Tests.Common
                         Width = 2
                     }
                 };
+            return this;
+        }
+
+        public DeliveryBuilder WithPod()
+        {
+            if (_delivery.DeliveryDeliveryAttributes == null)
+            {
+                _delivery.DeliveryDeliveryAttributes = new List<DeliveryDeliveryAttribute>();
+            }
+
+            _delivery.DeliveryDeliveryAttributes.Add(new DeliveryDeliveryAttribute
+            {
+                DeliveryAttributeId = DeliveryAttributes.Pod.Id
+            });
+            return this;
+        }
+
+        public DeliveryBuilder WithSameDay()
+        {
+            if (_delivery.DeliveryDeliveryAttributes == null)
+            {
+                _delivery.DeliveryDeliveryAttributes = new List<DeliveryDeliveryAttribute>();
+            }
+
+            _delivery.DeliveryDeliveryAttributes.Add(new DeliveryDeliveryAttribute
+            {
+                DeliveryAttributeId = DeliveryAttributes.SameDay.Id
+            });
+            return this;
+        }
+
+        public DeliveryBuilder WithCashOnDelivery()
+        {
+            if (_delivery.DeliveryDeliveryAttributes == null)
+            {
+                _delivery.DeliveryDeliveryAttributes = new List<DeliveryDeliveryAttribute>();
+            }
+
+            _delivery.DeliveryDeliveryAttributes.Add(new DeliveryDeliveryAttribute
+            {
+                DeliveryAttributeId = DeliveryAttributes.CashOnDelivery.Id
+            });
             return this;
         }
 

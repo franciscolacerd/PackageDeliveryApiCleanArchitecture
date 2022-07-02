@@ -19,5 +19,9 @@ namespace PackageDelivery.Persistence
         public DbSet<Delivery> Deliveries { get; set; } = null!;
 
         public DbSet<Package> Packages { get; set; } = null!;
+
+        public DbSet<DeliveryDeliveryAttribute> DeliveryDeliveryAttributes { get; set; } = null!;
+
+        public DbSet<DeliveryAttribute> DeliveryAttributes { get; set; } = null!;
     }
 }
