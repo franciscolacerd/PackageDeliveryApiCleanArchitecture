@@ -51,9 +51,9 @@ namespace PackageDelivery.Persistence.Tests.Common
                           .WithBarcode(15.ToRandomStringOfInts())
                           .WithWeight(2.ToRandomDecimal())
                           .WithOneDelivery()
+                          .WithTwoPackages()
                           .WithPod()
                           .WithCashOnDelivery()
-                          .WithTwoPackages()
                           .Build();
         }
     }

@@ -4,7 +4,7 @@ using PackageDelivery.Application.Contracts.Persistence;
 using PackageDelivery.Persistence.Tests.Common;
 using PackageDelivery.Persistence.Tests.Strapper;
 
-namespace NSUOW.Persistence.Tests
+namespace PackageDelivery.Persistence.Tests
 {
     public class PackagesTests : BaseTest
     {
