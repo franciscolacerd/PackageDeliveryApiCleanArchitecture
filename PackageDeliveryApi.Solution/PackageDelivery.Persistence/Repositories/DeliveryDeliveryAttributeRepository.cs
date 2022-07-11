@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
-using PackageDelivery.Application.Contracts.Persistence;
-using PackageDelivery.Domain;
+using PackageDelivery.Domain.Contracts.Persistence;
+using PackageDelivery.Domain.DTOs;
+using PackageDelivery.Domain.Entities;
 
 namespace PackageDelivery.Persistence.Repositories
 {

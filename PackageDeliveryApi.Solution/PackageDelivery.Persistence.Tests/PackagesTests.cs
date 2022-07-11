@@ -1,6 +1,6 @@
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
-using PackageDelivery.Application.Contracts.Persistence;
+using PackageDelivery.Domain.Contracts.Persistence;
 using PackageDelivery.Persistence.Tests.Common;
 using PackageDelivery.Persistence.Tests.Strapper;
 

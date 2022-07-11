@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore.Storage;
-using PackageDelivery.Application.Contracts.Persistence;
+using PackageDelivery.Domain.Contracts.Persistence;
 using System.Security.Claims;
 
 namespace PackageDelivery.Persistence.Repositories

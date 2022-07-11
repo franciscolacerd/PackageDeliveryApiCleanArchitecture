@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using PackageDelivery.Domain;
+using PackageDelivery.Domain.Entities;
 
 namespace PackageDelivery.Persistence.Configurations.Entities
 {

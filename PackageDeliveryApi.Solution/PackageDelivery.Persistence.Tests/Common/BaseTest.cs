@@ -1,7 +1,7 @@
 ﻿using FluentAssertions;
-using PackageDelivery.Application.Contracts.Persistence;
-using PackageDelivery.Application.Extensions;
-using PackageDelivery.Domain;
+using PackageDelivery.Domain.Contracts.Persistence;
+using PackageDelivery.Domain.Entities;
+using PackageDelivery.Domain.Extensions;
 
 namespace PackageDelivery.Persistence.Tests.Common
 {

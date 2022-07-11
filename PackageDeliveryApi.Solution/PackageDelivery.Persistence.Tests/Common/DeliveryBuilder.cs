@@ -1,5 +1,5 @@
-﻿using PackageDelivery.Application.Extensions;
-using PackageDelivery.Domain;
+﻿using PackageDelivery.Domain.Entities;
+using PackageDelivery.Domain.Extensions;
 using PackageDelivery.Domain.SmartEnums;
 
 namespace PackageDelivery.Persistence.Tests.Common

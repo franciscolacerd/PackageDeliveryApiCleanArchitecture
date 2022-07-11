@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations;
-using PackageDelivery.Domain;
+using PackageDelivery.Domain.Entities;
 using PackageDelivery.Domain.SmartEnums;
 
 #nullable disable

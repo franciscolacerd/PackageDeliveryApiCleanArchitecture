@@ -1,11 +1,10 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using PackageDelivery.Application.Contracts.Persistence;
-using PackageDelivery.Application.DTOs.Common;
-using PackageDelivery.Application.Extensions;
-using PackageDelivery.Application.Models.Pagination;
 using PackageDelivery.Domain.Common;
-using PackageDelivery.Persistence;
+using PackageDelivery.Domain.Contracts.Persistence;
+using PackageDelivery.Domain.DTOs.Common;
+using PackageDelivery.Domain.Extensions;
+using PackageDelivery.Domain.Models.Pagination;
 using PackageDelivery.Persistence.Common;
 using System.Linq.Expressions;
 

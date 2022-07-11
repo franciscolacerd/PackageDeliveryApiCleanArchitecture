@@ -322,6 +322,108 @@ namespace PackageDelivery.Persistence.Migrations
                     b.ToTable("Delivery_DeliveryAttributes", "dbo");
                 });
 
+            modelBuilder.Entity("PackageDelivery.Domain.Event", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("EventId");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
+                        .HasColumnName("CreatedBy");
+
+                    b.Property<DateTime>("CreatedDateUtc")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("CreatedDateUtc");
+
+                    b.Property<int>("DeliveryId")
+                        .HasColumnType("int")
+                        .HasColumnName("DeliveryId");
+
+                    b.Property<int>("EventTypeId")
+                        .HasColumnType("int")
+                        .HasColumnName("EventTypeId");
+
+                    b.Property<int?>("PackageId")
+                        .HasColumnType("int")
+                        .HasColumnName("VolumeId");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
+                        .HasColumnName("UpdatedBy");
+
+                    b.Property<DateTime?>("UpdatedDateUtc")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("UpdatedDateUtc");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DeliveryId");
+
+                    b.HasIndex("EventTypeId");
+
+                    b.HasIndex("PackageId");
+
+                    b.ToTable("Events", "dbo");
+                });
+
+            modelBuilder.Entity("PackageDelivery.Domain.EventType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("EventTypeId");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
+                        .HasColumnName("CreatedBy");
+
+                    b.Property<DateTime>("CreatedDateUtc")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("CreatedDateUtc");
+
+                    b.Property<string>("EventTypeENG")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
+                        .HasColumnName("EventTypeENG");
+
+                    b.Property<string>("EventTypeES")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
+                        .HasColumnName("EventTypeES");
+
+                    b.Property<string>("EventTypePT")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
+                        .HasColumnName("EventTypePT");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)")
+                        .HasColumnName("UpdatedBy");
+
+                    b.Property<DateTime?>("UpdatedDateUtc")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("UpdatedDateUtc");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EventTypes", "dbo");
+                });
+
             modelBuilder.Entity("PackageDelivery.Domain.Package", b =>
                 {
                     b.Property<int>("Id")
@@ -408,6 +510,34 @@ namespace PackageDelivery.Persistence.Migrations
                     b.Navigation("DeliveryAttribute");
                 });
 
+            modelBuilder.Entity("PackageDelivery.Domain.Event", b =>
+                {
+                    b.HasOne("PackageDelivery.Domain.Delivery", "Delivery")
+                        .WithMany("Events")
+                        .HasForeignKey("DeliveryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_Events_Deliveries_DeliveryId");
+
+                    b.HasOne("PackageDelivery.Domain.EventType", "EventType")
+                        .WithMany("Events")
+                        .HasForeignKey("EventTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_Events_EventTypes_EventTypeId");
+
+                    b.HasOne("PackageDelivery.Domain.Package", "Package")
+                        .WithMany("Events")
+                        .HasForeignKey("PackageId")
+                        .HasConstraintName("FK_Events_Packages_PackageId");
+
+                    b.Navigation("Delivery");
+
+                    b.Navigation("EventType");
+
+                    b.Navigation("Package");
+                });
+
             modelBuilder.Entity("PackageDelivery.Domain.Package", b =>
                 {
                     b.HasOne("PackageDelivery.Domain.Delivery", "Delivery")
@@ -424,12 +554,24 @@ namespace PackageDelivery.Persistence.Migrations
                 {
                     b.Navigation("DeliveryDeliveryAttributes");
 
+                    b.Navigation("Events");
+
                     b.Navigation("Packages");
                 });
 
             modelBuilder.Entity("PackageDelivery.Domain.DeliveryAttribute", b =>
                 {
                     b.Navigation("DeliveryDeliveryAttributes");
+                });
+
+            modelBuilder.Entity("PackageDelivery.Domain.EventType", b =>
+                {
+                    b.Navigation("Events");
+                });
+
+            modelBuilder.Entity("PackageDelivery.Domain.Package", b =>
+                {
+                    b.Navigation("Events");
                 });
 #pragma warning restore 612, 618
         }

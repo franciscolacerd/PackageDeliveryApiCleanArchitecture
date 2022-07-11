@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PackageDelivery.Domain;
+using PackageDelivery.Domain.Entities;
 using PackageDelivery.Persistence.Common;
 
 namespace PackageDelivery.Persistence
@@ -23,5 +23,9 @@ namespace PackageDelivery.Persistence
         public DbSet<DeliveryDeliveryAttribute> DeliveryDeliveryAttributes { get; set; } = null!;
 
         public DbSet<DeliveryAttribute> DeliveryAttributes { get; set; } = null!;
+
+        public DbSet<Event> Events { get; set; } = null!;
+
+        public DbSet<EventType> EventTypes { get; set; } = null!;
     }
 }
