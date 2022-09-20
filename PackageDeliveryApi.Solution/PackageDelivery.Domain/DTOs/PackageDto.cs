@@ -2,7 +2,7 @@
 
 namespace PackageDelivery.Domain.DTOs
 {
-    public partial class PackageDto : BaseDto
+    public partial class PackageDto : BaseDomainDto
     {
         public int DeliveryId { get; set; }
         public string PackageBarCode { get; set; } = null!;

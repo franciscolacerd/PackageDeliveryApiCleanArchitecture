@@ -5,7 +5,7 @@ namespace PackageDelivery.Domain
 {
     public static class DomainServicesRegistration
     {
-        public static IServiceCollection ConfigureApplicationServices(this IServiceCollection services)
+        public static IServiceCollection ConfigureDomainServices(this IServiceCollection services)
         {
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
 

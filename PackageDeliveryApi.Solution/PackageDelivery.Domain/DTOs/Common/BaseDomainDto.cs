@@ -1,6 +1,6 @@
 ﻿namespace PackageDelivery.Domain.DTOs.Common
 {
-    public abstract class BaseDto
+    public abstract class BaseDomainDto
     {
         public int Id { get; set; }
         public DateTime CreatedDateUtc { get; set; }

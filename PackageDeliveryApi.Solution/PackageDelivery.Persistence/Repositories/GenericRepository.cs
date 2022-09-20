@@ -12,7 +12,7 @@ namespace PackageDelivery.Persistence.Repositories
 {
     public class GenericRepository<TEntity, TDto> : BaseRepository<TEntity>, IGenericRepository<TEntity, TDto>
         where TEntity : BaseDomainEntity
-        where TDto : BaseDto
+        where TDto : BaseDomainDto
     {
         private readonly PackageDeliveryDbContext _dbContext;
         protected IMapper _mapper { get; }

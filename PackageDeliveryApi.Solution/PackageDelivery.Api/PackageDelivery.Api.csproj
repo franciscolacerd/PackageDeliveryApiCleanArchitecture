@@ -7,11 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Middleware\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PackageDelivery.Application\PackageDelivery.Application.csproj" />
+    <ProjectReference Include="..\PackageDelivery.Domain\PackageDelivery.Domain.csproj" />
+    <ProjectReference Include="..\PackageDelivery.Persistence\PackageDelivery.Persistence.csproj" />
   </ItemGroup>
 
 </Project>

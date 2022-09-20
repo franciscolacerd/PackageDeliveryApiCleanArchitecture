@@ -2,7 +2,7 @@
 
 namespace PackageDelivery.Domain.DTOs
 {
-    public partial class DeliveryAttributeDto : BaseDto
+    public partial class DeliveryAttributeDto : BaseDomainDto
     {
         public DeliveryAttributeDto()
         {

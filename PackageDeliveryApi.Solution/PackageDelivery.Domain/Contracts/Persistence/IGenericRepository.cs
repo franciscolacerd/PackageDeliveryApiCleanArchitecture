@@ -7,7 +7,7 @@ namespace PackageDelivery.Domain.Contracts.Persistence
 {
     public interface IGenericRepository<TEntity, TDto>
         where TEntity : BaseDomainEntity
-        where TDto : BaseDto
+        where TDto : BaseDomainDto
     {
         Task<TEntity> AddAsync(TEntity entity);
 
