@@ -16,11 +16,21 @@ namespace PackageDelivery.Persistence.Repositories
 
         private readonly IHttpContextAccessor _httpContextAccessor;
 
+        private IApiLogRepository _apiLogRepository;
+
         private IDeliveryRepository _deliveryRepository;
 
-        private IPackageRepository _packageRepository;
         private IDeliveryDeliveryAttributeRepository _deliveryDeliveryAttributeRepository;
+
         private IDeliveryAttributeRepository _deliveryAttributeRepository;
+
+        private IEventRepository _eventRepository;
+
+        private IEventTypeRepository _eventTypeRepository;
+
+        private IExceptionLogRepository _exceptionLogRepository;
+
+        private IPackageRepository _packageRepository;
 
         public UnitOfWork(PackageDeliveryDbContext context, IHttpContextAccessor httpContextAccessor, IMapper mapper)
         {
@@ -29,13 +39,21 @@ namespace PackageDelivery.Persistence.Repositories
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public IDeliveryRepository DeliveryRepository => _deliveryRepository ??= new DeliveryRepository(_context, _mapper);
+        public IApiLogRepository ApiLogRepository => _apiLogRepository ??= new ApiLogRepository(_context, _mapper);
 
-        public IPackageRepository PackageRepository => _packageRepository ??= new PackageRepository(_context, _mapper);
+        public IDeliveryRepository DeliveryRepository => _deliveryRepository ??= new DeliveryRepository(_context, _mapper);
 
         public IDeliveryDeliveryAttributeRepository DeliveryDeliveryAttributeRepository => _deliveryDeliveryAttributeRepository ??= new DeliveryDeliveryAttributeRepository(_context, _mapper);
 
         public IDeliveryAttributeRepository DeliveryAttributeRepository => _deliveryAttributeRepository ??= new DeliveryAttributeRepository(_context, _mapper);
+
+        public IEventRepository EventRepository => _eventRepository ??= new EventRepository(_context, _mapper);
+
+        public IEventTypeRepository EventTypeRepository => _eventTypeRepository ??= new EventTypeRepository(_context, _mapper);
+
+        public IExceptionLogRepository ExceptionLogRepository => _exceptionLogRepository ??= new ExceptionLogRepository(_context, _mapper);
+
+        public IPackageRepository PackageRepository => _packageRepository ??= new PackageRepository(_context, _mapper);
 
         public async Task BeginTransactionAsync(CancellationToken cancellationToken = default)
         {

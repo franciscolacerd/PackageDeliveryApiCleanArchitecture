@@ -2,7 +2,7 @@
 
 namespace PackageDelivery.Domain.DTOs
 {
-    public class ApiLogDto : BaseLogDto
+    public class ApiLogDto : BaseDomainDto
     {
         public string? Scheme { get; set; }
 

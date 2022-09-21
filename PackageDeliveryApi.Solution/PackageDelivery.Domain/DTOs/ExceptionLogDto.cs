@@ -2,7 +2,7 @@
 
 namespace PackageDelivery.Domain.DTOs
 {
-    public class ExceptionLogDto : BaseLogDto
+    public class ExceptionLogDto : BaseDomainDto
     {
         public string Exception { get; set; } = null!;
     }

@@ -2,10 +2,14 @@
 {
     public interface IUnitOfWork : IDisposable
     {
+        IApiLogRepository ApiLogRepository { get; }
         IDeliveryRepository DeliveryRepository { get; }
-        IPackageRepository PackageRepository { get; }
         IDeliveryDeliveryAttributeRepository DeliveryDeliveryAttributeRepository { get; }
         IDeliveryAttributeRepository DeliveryAttributeRepository { get; }
+        IEventRepository EventRepository { get; }
+        IEventTypeRepository EventTypeRepository { get; }
+        IExceptionLogRepository ExceptionLogRepository { get; }
+        IPackageRepository PackageRepository { get; }
 
         Task BeginTransactionAsync(CancellationToken cancellationToken = default);
 

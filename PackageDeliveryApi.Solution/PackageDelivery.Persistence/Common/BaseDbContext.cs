@@ -1,9 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using PackageDelivery.Domain.Common;
+using PackageDelivery.Domain.Entities;
 
 namespace PackageDelivery.Persistence.Common
 {
-    public class BaseDbContext : DbContext
+    public class BaseDbContext : IdentityDbContext<User, IdentityRole<int>, int>
     {
         private const string defaultUsername = "SYSTEM";
 

@@ -14,6 +14,8 @@ namespace PackageDelivery.Persistence
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(PackageDeliveryDbContext).Assembly);
+
+            base.OnModelCreating(modelBuilder);
         }
 
         public DbSet<Delivery> Deliveries { get; set; } = null!;
@@ -27,5 +29,9 @@ namespace PackageDelivery.Persistence
         public DbSet<Event> Events { get; set; } = null!;
 
         public DbSet<EventType> EventTypes { get; set; } = null!;
+
+        public DbSet<ExceptionLog> ExceptionLogs { get; set; } = null!;
+
+        public DbSet<ApiLog> ApiLogs { get; set; } = null!;
     }
 }

@@ -1,10 +1,9 @@
 ﻿using PackageDelivery.Domain.Contracts.Persistence;
 
-namespace PackageDelivery.Domain.Common
+namespace PackageDelivery.Domain.Entities
 {
-    public abstract class BaseDomainEntity : IAudit, IIdentity
+    public class User : Microsoft.AspNetCore.Identity.IdentityUser<int>, IAudit
     {
-        public int Id { get; set; }
         public DateTime CreatedDateUtc { get; set; }
         public string CreatedBy { get; set; } = null!;
         public DateTime? UpdatedDateUtc { get; set; }

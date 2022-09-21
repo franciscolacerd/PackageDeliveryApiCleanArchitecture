@@ -2,7 +2,7 @@
 
 namespace PackageDelivery.Domain.Entities
 {
-    public class ApiLog : BaseLog
+    public class ApiLog : BaseDomainEntity
     {
         public string? Scheme { get; set; }
 

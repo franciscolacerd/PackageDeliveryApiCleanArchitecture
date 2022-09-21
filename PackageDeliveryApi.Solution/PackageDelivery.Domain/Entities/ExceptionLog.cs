@@ -2,7 +2,7 @@
 
 namespace PackageDelivery.Domain.Entities
 {
-    public class ExceptionLog : BaseLog
+    public class ExceptionLog : BaseDomainEntity
     {
         public string Exception { get; set; } = null!;
     }
