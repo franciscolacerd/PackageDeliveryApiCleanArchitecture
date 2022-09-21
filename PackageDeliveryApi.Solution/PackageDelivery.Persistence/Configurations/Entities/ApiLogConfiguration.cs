@@ -10,7 +10,7 @@ namespace PackageDelivery.Persistence.Configurations.Entities
             #region Generated Configure
 
             // table
-            builder.ToTable("ApiLogConfigurations", "dbo");
+            builder.ToTable("ApiLogs", "dbo");
 
             // key
             builder.HasKey(t => t.Id);
