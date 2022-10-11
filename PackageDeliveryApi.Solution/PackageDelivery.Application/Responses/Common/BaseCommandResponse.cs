@@ -1,4 +1,4 @@
-﻿namespace PackageDelivery.Application.Responses
+﻿namespace PackageDelivery.Application.Responses.Common
 {
     public class BaseCommandResponse
     {

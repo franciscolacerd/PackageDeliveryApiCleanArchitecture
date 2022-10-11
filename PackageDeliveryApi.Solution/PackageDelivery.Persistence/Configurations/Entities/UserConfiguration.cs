@@ -8,18 +8,6 @@ namespace PackageDelivery.Persistence.Configurations.Entities
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            ////builder.ToTable("Users", "dbo");
-
-            //// key
-            //builder.HasKey(t => t.Id);
-
-            //// properties
-            //builder.Property(t => t.Id)
-            //    .IsRequired()
-            //    .HasColumnName("Id")
-            //    .HasColumnType("int")
-            //    .ValueGeneratedOnAdd();
-
             builder.Property(t => t.CreatedBy)
                 .IsRequired()
                 .HasColumnName("CreatedBy")

@@ -1,6 +1,6 @@
 ﻿namespace PackageDelivery.Domain.Aggregates.DeliveryAggregate
 {
-    public class DeliveryAggregator
+    public class Delivery
     {
     }
 }
