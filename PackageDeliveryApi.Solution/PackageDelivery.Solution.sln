@@ -31,13 +31,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{FD04548F-125
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration", "Integration", "{5652FBCF-F0CF-429A-A71E-7A24362202E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PackageDelivery.Integration.Tests", "PackageDelivery.Integration.Tests\PackageDelivery.Integration.Tests.csproj", "{6B38F1B8-31AF-4751-AEF6-057FD0C53C8E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackageDelivery.Integration.Tests", "PackageDelivery.Integration.Tests\PackageDelivery.Integration.Tests.csproj", "{6B38F1B8-31AF-4751-AEF6-057FD0C53C8E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PackageDelivery.Api.Tests", "PackageDelivery.Api.Tests\PackageDelivery.Api.Tests.csproj", "{C016AD33-52BD-4035-977C-F809D445F1DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackageDelivery.Api.Tests", "PackageDelivery.Api.Tests\PackageDelivery.Api.Tests.csproj", "{C016AD33-52BD-4035-977C-F809D445F1DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PackageDelivery.Application.Tests", "PackageDelivery.Application.Tests\PackageDelivery.Application.Tests.csproj", "{797BC3D9-E5D9-4950-B112-E8F1B62DD9C9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackageDelivery.Application.Tests", "PackageDelivery.Application.Tests\PackageDelivery.Application.Tests.csproj", "{797BC3D9-E5D9-4950-B112-E8F1B62DD9C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PackageDelivery.Domain.Tests", "PackageDelivery.Domain.Tests\PackageDelivery.Domain.Tests.csproj", "{79F0B483-E079-4BBC-9001-7BB1D83270B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackageDelivery.Domain.Tests", "PackageDelivery.Domain.Tests\PackageDelivery.Domain.Tests.csproj", "{79F0B483-E079-4BBC-9001-7BB1D83270B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

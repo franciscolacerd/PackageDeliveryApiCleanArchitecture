@@ -1,15 +1,16 @@
 ﻿using MediatR;
 using PackageDelivery.Application.Responses.Common;
+using PackageDelivery.Domain.Models.Delivery;
 
 namespace PackageDelivery.Application.Features.Delivery.Requests.Commands
 {
     public class CreateDeliveryCommand : IRequest<BaseCommandResponse>
     {
-        public CreateDeliveryCommand(Domain.Aggregates.DeliveryAggregate.Delivery delivery)
+        public CreateDeliveryCommand(DeliveryModel delivery)
         {
             Delivery = delivery;
         }
 
-        public Domain.Aggregates.DeliveryAggregate.Delivery Delivery { get; }
+        public DeliveryModel Delivery { get; }
     }
 }

@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using PackageDelivery.Application.Features.Delivery.Requests.Commands;
 using PackageDelivery.Application.Responses.Common;
 using PackageDelivery.Application.Tests.Strapper;
-using PackageDelivery.Domain.Aggregates.DeliveryAggregate;
+using PackageDelivery.Domain.Models.Delivery;
 
 namespace PackageDelivery.Application.Tests.Commands
 {
@@ -26,7 +26,7 @@ namespace PackageDelivery.Application.Tests.Commands
         public async Task Should_CreateDelivery_ReturnSuccessTrue()
         {
             //arranje
-            var delivery = new Delivery();
+            var delivery = new DeliveryModel();
 
             //act
             var result = await _handler.Handle(new CreateDeliveryCommand(delivery), CancellationToken.None);
