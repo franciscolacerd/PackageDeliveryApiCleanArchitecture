@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
-using PackageDelivery.Domain.Contracts.Persistence;
 using PackageDelivery.Domain.Extensions;
+using PackageDelivery.Persistence.Contracts.Persistence;
+using PackageDelivery.Persistence.Entities;
 using System.Net;
 
 namespace PackageDelivery.Api.Middleware
@@ -30,7 +31,7 @@ namespace PackageDelivery.Api.Middleware
             {
                 _logger.LogError(ex, $"Something went wrong: {ex}");
 
-                await _unitOfWork.ExceptionLogRepository.AddAsync(new Domain.Entities.ExceptionLog
+                await _unitOfWork.ExceptionLogRepository.AddAsync(new ExceptionLog
                 {
                     CreatedDateUtc = DateTime.UtcNow,
                     CreatedBy = nameof(ExceptionMiddleware),

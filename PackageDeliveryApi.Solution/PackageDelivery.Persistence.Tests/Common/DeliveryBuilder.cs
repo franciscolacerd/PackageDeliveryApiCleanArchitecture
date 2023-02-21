@@ -1,6 +1,6 @@
-﻿using PackageDelivery.Domain.Entities;
-using PackageDelivery.Domain.Extensions;
-using PackageDelivery.Domain.SmartEnums;
+﻿using PackageDelivery.Domain.Extensions;
+using PackageDelivery.Persistence.Entities;
+using PackageDelivery.Persistence.SmartEnums;
 
 namespace PackageDelivery.Persistence.Tests.Common
 {

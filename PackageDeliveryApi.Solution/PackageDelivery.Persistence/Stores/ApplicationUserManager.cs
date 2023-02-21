@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using PackageDelivery.Domain.Entities;
+using PackageDelivery.Persistence.Entities;
 
 namespace PackageDelivery.Persistence.Stores
 {

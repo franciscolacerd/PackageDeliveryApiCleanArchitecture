@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using PackageDelivery.Domain.Common;
-using PackageDelivery.Domain.Entities;
+using PackageDelivery.Persistence.Entities;
 
 namespace PackageDelivery.Persistence.Common
 {

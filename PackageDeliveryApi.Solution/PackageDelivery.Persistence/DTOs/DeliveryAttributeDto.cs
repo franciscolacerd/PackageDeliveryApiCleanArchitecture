@@ -1,0 +1,17 @@
+﻿using PackageDelivery.Persistence.DTOs.Common;
+
+namespace PackageDelivery.Persistence.DTOs
+{
+    public partial class DeliveryAttributeDto : BaseDomainDto
+    {
+        public DeliveryAttributeDto()
+        {
+            DeliveryDeliveryAttributes = new HashSet<DeliveryDeliveryAttributeDto>();
+        }
+
+        public string DeliveryAttributeENG { get; set; } = null!;
+        public string DeliveryAttributeES { get; set; } = null!;
+        public string DeliveryAttributePT { get; set; } = null!;
+        public virtual ICollection<DeliveryDeliveryAttributeDto> DeliveryDeliveryAttributes { get; set; }
+    }
+}

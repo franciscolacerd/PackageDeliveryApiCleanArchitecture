@@ -1,72 +1,47 @@
-﻿using PackageDelivery.Domain.Entities;
+﻿using PackageDelivery.Domain.DomainModels.Delivery;
 using PackageDelivery.Domain.Models.Delivery;
-using PackageDelivery.Domain.SmartEnums;
+using PackageDelivery.Persistence.Entities;
 
-namespace PackageDelivery.Domain.Builders
+namespace PackageDelivery.Domain.Builders;
+
+public class DeliveryBuilder : IDeliveryBuilder
 {
-    public class DeliveryBuilder
+    private Delivery _delivery;
+    private IDeliveryDomainModel _deliveryDomainModel;
+
+    public DeliveryBuilder(IDeliveryDomainModel deliveryDomainModel)
     {
-        private Delivery _delivery;
-        private string _barcode;
+        this._delivery = new Delivery();
+        this._deliveryDomainModel = deliveryDomainModel;
+    }
 
-        public DeliveryBuilder() => this._delivery = new Delivery();
+    public DeliveryBuilder WithDetails(DetailsModel details)
+    {
+        this._deliveryDomainModel.AddDetails(this._delivery, details);
+        return this;
+    }
 
-        public DeliveryBuilder WithBarcode(string barcode)
-        {
-            this._barcode = barcode;
-            return this;
-        }
+    public DeliveryBuilder WithSender(SenderModel sender)
+    {
+        this._deliveryDomainModel.AddSender(this._delivery, sender);
+        return this;
+    }
 
-        public DeliveryBuilder WithDelivery(DeliveryModel delivery)
-        {
-            return this;
-        }
+    public DeliveryBuilder WithReceiver(ReceiverModel receiver)
+    {
+        this._deliveryDomainModel.AddReceiver(this._delivery, receiver);
+        return this;
+    }
 
-        public DeliveryBuilder WithPod()
-        {
-            if (_delivery.DeliveryDeliveryAttributes == null)
-            {
-                _delivery.DeliveryDeliveryAttributes = new List<DeliveryDeliveryAttribute>();
-            }
+    public DeliveryBuilder WithAttributes(AttributesModel attributes)
+    {
+        this._deliveryDomainModel.AddAttributes(this._delivery, attributes);
+        return this;
+    }
 
-            _delivery.DeliveryDeliveryAttributes.Add(new DeliveryDeliveryAttribute
-            {
-                DeliveryAttributeId = DeliveryAttributes.Pod.Id
-            });
-            return this;
-        }
-
-        public DeliveryBuilder WithSameDay()
-        {
-            if (_delivery.DeliveryDeliveryAttributes == null)
-            {
-                _delivery.DeliveryDeliveryAttributes = new List<DeliveryDeliveryAttribute>();
-            }
-
-            _delivery.DeliveryDeliveryAttributes.Add(new DeliveryDeliveryAttribute
-            {
-                DeliveryAttributeId = DeliveryAttributes.SameDay.Id
-            });
-            return this;
-        }
-
-        public DeliveryBuilder WithCashOnDelivery()
-        {
-            if (_delivery.DeliveryDeliveryAttributes == null)
-            {
-                _delivery.DeliveryDeliveryAttributes = new List<DeliveryDeliveryAttribute>();
-            }
-
-            _delivery.DeliveryDeliveryAttributes.Add(new DeliveryDeliveryAttribute
-            {
-                DeliveryAttributeId = DeliveryAttributes.CashOnDelivery.Id
-            });
-            return this;
-        }
-
-        public Delivery Build()
-        {
-            return _delivery;
-        }
+    public async Task<Delivery> BuildAsync()
+    {
+        await this._deliveryDomainModel.AddBarcodeAsync(this._delivery);
+        return this._delivery;
     }
 }

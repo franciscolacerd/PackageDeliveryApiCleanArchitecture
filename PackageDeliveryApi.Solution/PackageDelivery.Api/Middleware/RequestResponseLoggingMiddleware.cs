@@ -1,4 +1,5 @@
-﻿using PackageDelivery.Domain.Contracts.Persistence;
+﻿using PackageDelivery.Persistence.Contracts.Persistence;
+using PackageDelivery.Persistence.Entities;
 using System.Text;
 
 namespace PackageDelivery.Api.Middleware
@@ -37,7 +38,7 @@ namespace PackageDelivery.Api.Middleware
 
                 var response = await FormatResponse(context.Response);
 
-                await _unitOfWork.ApiLogRepository.AddAsync(new Domain.Entities.ApiLog
+                await _unitOfWork.ApiLogRepository.AddAsync(new ApiLog
                 {
                     Scheme = context?.Request?.Scheme,
                     Host = context?.Request?.Host.Value,

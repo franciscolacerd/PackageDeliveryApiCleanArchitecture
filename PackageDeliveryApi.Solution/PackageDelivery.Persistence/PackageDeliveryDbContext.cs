@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PackageDelivery.Domain.Entities;
 using PackageDelivery.Persistence.Common;
+using PackageDelivery.Persistence.Entities;
 
 namespace PackageDelivery.Persistence
 {

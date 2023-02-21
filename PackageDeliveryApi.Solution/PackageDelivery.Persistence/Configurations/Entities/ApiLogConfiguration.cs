@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PackageDelivery.Domain.Entities;
+using PackageDelivery.Persistence.Entities;
 
 namespace PackageDelivery.Persistence.Configurations.Entities
 {

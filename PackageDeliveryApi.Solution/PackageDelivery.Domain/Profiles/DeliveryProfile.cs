@@ -1,5 +1,5 @@
-using PackageDelivery.Domain.DTOs;
-using PackageDelivery.Domain.Entities;
+using PackageDelivery.Persistence.DTOs;
+using PackageDelivery.Persistence.Entities;
 
 namespace PackageDelivery.Domain.Profiles
 {

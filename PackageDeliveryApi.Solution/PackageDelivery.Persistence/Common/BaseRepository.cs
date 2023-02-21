@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PackageDelivery.Domain.Common;
 using System.Linq.Expressions;
 
 namespace PackageDelivery.Persistence.Common

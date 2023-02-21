@@ -2,8 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using PackageDelivery.Domain.Contracts.Persistence;
-using PackageDelivery.Domain.Entities;
+using PackageDelivery.Persistence.Contracts.Persistence;
+using PackageDelivery.Persistence.Entities;
 using PackageDelivery.Persistence.Repositories;
 using System.Reflection;
 
