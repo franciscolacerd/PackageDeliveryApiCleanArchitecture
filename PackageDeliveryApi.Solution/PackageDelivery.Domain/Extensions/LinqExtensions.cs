@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using PackageDelivery.Persistence.Repositories.Models.Pagination;
 using System.Linq.Expressions;
 
-namespace PackageDelivery.Persistence.Extensions
+namespace PackageDelivery.Domain.Extensions
 {
     public static class LinqExtensions
     {

@@ -1,4 +1,4 @@
-﻿namespace PackageDelivery.Persistence.Contracts.Persistence
+﻿namespace PackageDelivery.Persistence.Contracts
 {
     public interface IAudit
     {

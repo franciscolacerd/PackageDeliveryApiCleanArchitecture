@@ -1,4 +1,4 @@
-﻿using PackageDelivery.Persistence.Contracts.Persistence;
+﻿using PackageDelivery.Persistence.Contracts;
 
 namespace PackageDelivery.Persistence.Entities
 {
