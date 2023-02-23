@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
+using PackageDelivery.Domain.Contracts.Persistence;
 using PackageDelivery.Domain.Extensions;
-using PackageDelivery.Persistence.Contracts.Persistence;
 using PackageDelivery.Persistence.Entities;
 using System.Net;
 

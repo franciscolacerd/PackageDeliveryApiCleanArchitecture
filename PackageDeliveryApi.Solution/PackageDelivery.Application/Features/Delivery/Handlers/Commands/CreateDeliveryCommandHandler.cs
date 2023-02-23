@@ -3,8 +3,8 @@ using PackageDelivery.Application.Features.Delivery.Requests.Commands;
 using PackageDelivery.Application.Responses;
 using PackageDelivery.Application.Validation.Delivery;
 using PackageDelivery.Domain.Builders;
+using PackageDelivery.Domain.Contracts.Persistence;
 using PackageDelivery.Domain.Exceptions;
-using PackageDelivery.Persistence.Contracts.Persistence;
 
 namespace PackageDelivery.Application.Features.Delivery.Handlers.Commands;
 

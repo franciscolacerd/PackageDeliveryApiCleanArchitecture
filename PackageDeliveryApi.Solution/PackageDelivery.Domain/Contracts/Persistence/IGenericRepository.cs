@@ -3,7 +3,7 @@ using PackageDelivery.Persistence.DTOs.Common;
 using PackageDelivery.Persistence.Repositories.Models.Pagination;
 using System.Linq.Expressions;
 
-namespace PackageDelivery.Persistence.Contracts.Persistence
+namespace PackageDelivery.Domain.Contracts.Persistence
 {
     public interface IGenericRepository<TEntity, TDto>
         where TEntity : BaseDomainEntity

@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using PackageDelivery.Domain.Contracts.Persistence;
 using PackageDelivery.Persistence;
 using PackageDelivery.Persistence.Common;
-using PackageDelivery.Persistence.Contracts.Persistence;
 using PackageDelivery.Persistence.DTOs.Common;
 using PackageDelivery.Persistence.Extensions;
 using PackageDelivery.Persistence.Repositories.Models.Pagination;

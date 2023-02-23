@@ -1,5 +1,5 @@
-﻿namespace PackageDelivery.Domain.Contracts;
-
-public interface IAggregateRoot { }
-
-
+﻿namespace PackageDelivery.Domain.Contracts
+{
+    public interface IAggregateRoot
+    { }
+}

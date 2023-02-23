@@ -1,4 +1,4 @@
-﻿namespace PackageDelivery.Persistence.Contracts.Persistence
+﻿namespace PackageDelivery.Domain.Contracts.Persistence
 {
     public interface IUnitOfWork : IDisposable
     {

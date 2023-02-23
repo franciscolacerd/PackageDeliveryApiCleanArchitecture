@@ -1,4 +1,4 @@
-﻿using PackageDelivery.Persistence.Contracts.Persistence;
+﻿using PackageDelivery.Domain.Contracts.Persistence;
 using PackageDelivery.Persistence.Entities;
 using System.Text;
 
