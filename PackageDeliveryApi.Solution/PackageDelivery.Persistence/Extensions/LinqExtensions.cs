@@ -1,11 +1,10 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
-using PackageDelivery.Domain.Extensions;
 using PackageDelivery.Persistence.Repositories.Models.Pagination;
 using System.Linq.Expressions;
 
-namespace PackageDelivery.Domain.Extensions
+namespace PackageDelivery.Persistence.Extensions
 {
     public static class LinqExtensions
     {

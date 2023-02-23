@@ -15,6 +15,12 @@ public class DeliveryBuilder : IDeliveryBuilder
         this._deliveryDomainModel = deliveryDomainModel;
     }
 
+    public DeliveryBuilder WithUser(string user)
+    {
+        this._deliveryDomainModel.AddUser(user);
+        return this;
+    }
+
     public DeliveryBuilder WithDetails(DetailsModel details)
     {
         this._deliveryDomainModel.AddDetails(this._delivery, details);

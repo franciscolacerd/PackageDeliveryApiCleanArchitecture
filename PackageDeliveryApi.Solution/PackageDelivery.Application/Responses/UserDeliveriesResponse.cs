@@ -1,8 +1,7 @@
 ﻿using PackageDelivery.Application.Responses.Common;
 
-namespace PackageDelivery.Application.Responses
+namespace PackageDelivery.Application.Responses;
+
+public class UserDeliveriesResponse : BaseCommandResponse
 {
-    public class UserDeliveriesResponse : BaseCommandResponse
-    {
-    }
 }
