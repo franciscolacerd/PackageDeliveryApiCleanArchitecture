@@ -1,6 +1,6 @@
-﻿using PackageDelivery.Persistence.Repositories.Models.Pagination.Common;
+﻿using PackageDelivery.Domain.Models.Pagination.Common;
 
-namespace PackageDelivery.Persistence.Repositories.Models.Pagination
+namespace PackageDelivery.Domain.Models.Pagination
 {
     public class PagedResult<T> : PagedResultBase where T : class
     {

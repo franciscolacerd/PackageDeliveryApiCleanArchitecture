@@ -1,4 +1,4 @@
-﻿namespace PackageDelivery.Persistence.Repositories.Models.Pagination.Common
+﻿namespace PackageDelivery.Domain.Models.Pagination.Common
 {
     public abstract class PagedResultBase
     {

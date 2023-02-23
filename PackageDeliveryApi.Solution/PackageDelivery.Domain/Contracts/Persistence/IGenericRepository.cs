@@ -1,6 +1,6 @@
 ﻿using PackageDelivery.Domain.DTOs.Common;
+using PackageDelivery.Domain.Models.Pagination;
 using PackageDelivery.Persistence.Common;
-using PackageDelivery.Persistence.Repositories.Models.Pagination;
 using System.Linq.Expressions;
 
 namespace PackageDelivery.Domain.Contracts.Persistence
