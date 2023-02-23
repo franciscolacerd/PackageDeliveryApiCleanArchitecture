@@ -1,10 +1,11 @@
-﻿namespace PackageDelivery.Domain.Models.Delivery;
-
-public class AttributesModel
+﻿namespace PackageDelivery.Domain.Models.Delivery
 {
-    public bool Pod { get; set; }
+    public class AttributesModel
+    {
+        public bool Pod { get; set; }
 
-    public bool SameDay { get; set; }
+        public bool SameDay { get; set; }
 
-    public bool CashOnDelivery { get; set; }
+        public bool CashOnDelivery { get; set; }
+    }
 }

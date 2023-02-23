@@ -1,4 +1,4 @@
-﻿namespace PackageDelivery.Persistence.DTOs.Common
+﻿namespace PackageDelivery.Domain.DTOs.Common
 {
     public abstract class BaseDomainDto
     {

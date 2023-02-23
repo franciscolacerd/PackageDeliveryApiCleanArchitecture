@@ -1,6 +1,6 @@
-﻿using PackageDelivery.Persistence.DTOs.Common;
+﻿using PackageDelivery.Domain.DTOs.Common;
 
-namespace PackageDelivery.Persistence.DTOs
+namespace PackageDelivery.Domain.DTOs
 {
     public class EventTypeDto : BaseDomainDto
     {

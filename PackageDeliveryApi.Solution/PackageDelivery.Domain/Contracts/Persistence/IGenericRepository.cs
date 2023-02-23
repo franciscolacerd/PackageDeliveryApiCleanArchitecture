@@ -1,5 +1,5 @@
-﻿using PackageDelivery.Persistence.Common;
-using PackageDelivery.Persistence.DTOs.Common;
+﻿using PackageDelivery.Domain.DTOs.Common;
+using PackageDelivery.Persistence.Common;
 using PackageDelivery.Persistence.Repositories.Models.Pagination;
 using System.Linq.Expressions;
 

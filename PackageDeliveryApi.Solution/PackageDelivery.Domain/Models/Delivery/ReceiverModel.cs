@@ -1,9 +1,10 @@
-﻿namespace PackageDelivery.Domain.Models.Delivery;
-
-public class ReceiverModel
+﻿namespace PackageDelivery.Domain.Models.Delivery
 {
-    public string Name { get; set; } = null!;
-    public ContactModel Contact { get; set; } = null!;
+    public class ReceiverModel
+    {
+        public string Name { get; set; } = null!;
+        public ContactModel Contact { get; set; } = null!;
 
-    public AddressModel Address { get; set; } = null!;
+        public AddressModel Address { get; set; } = null!;
+    }
 }

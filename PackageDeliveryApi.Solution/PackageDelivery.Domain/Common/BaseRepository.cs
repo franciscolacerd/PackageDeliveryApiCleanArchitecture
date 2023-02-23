@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using PackageDelivery.Persistence;
+using PackageDelivery.Persistence.Common;
 using System.Linq.Expressions;
 
-namespace PackageDelivery.Persistence.Common
+namespace PackageDelivery.Domain.Common
 {
     public class BaseRepository<TEntity>
            where TEntity : BaseDomainEntity
