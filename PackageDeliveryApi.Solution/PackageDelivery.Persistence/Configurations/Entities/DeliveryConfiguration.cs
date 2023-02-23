@@ -196,23 +196,10 @@ namespace PackageDelivery.Persistence.Configurations.Entities
                 .HasColumnType("nvarchar(400)")
                 .HasMaxLength(400);
 
-            builder.Property(t => t.PinNumber)
-                .HasColumnName("PinNumber")
-                .HasColumnType("nvarchar(4)")
-                .HasMaxLength(4);
-
             builder.Property(t => t.Eta)
                 .HasColumnName("ETA")
                 .HasColumnType("nvarchar(100)")
                 .HasMaxLength(100);
-
-            builder.Property(t => t.PickingDate)
-                .HasColumnName("PickingDate")
-                .HasColumnType("datetime2");
-
-            builder.Property(t => t.DeliveryDate)
-                .HasColumnName("DeliveryDate")
-                .HasColumnType("datetime2");
         }
     }
 }

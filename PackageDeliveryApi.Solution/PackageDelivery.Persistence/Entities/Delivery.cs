@@ -39,10 +39,7 @@ namespace PackageDelivery.Persistence.Entities
         public string? ReceiverAddressCountryCode { get; set; }
         public string? ReceiverFixedInstructions { get; set; }
         public string BarCode { get; set; } = null!;
-        public string? PinNumber { get; set; }
         public string? Eta { get; set; }
-        public DateTime? PickingDate { get; set; }
-        public DateTime? DeliveryDate { get; set; }
         public virtual ICollection<Package> Packages { get; set; } = null!;
         public virtual ICollection<DeliveryDeliveryAttribute> DeliveryDeliveryAttributes { get; set; }
         public virtual ICollection<Event> Events { get; set; } = null!;

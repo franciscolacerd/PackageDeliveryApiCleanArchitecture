@@ -366,53 +366,6 @@ namespace PackageDelivery.Persistence.Tests
             pagedDeliveries.Results.First().Packages.Should().HaveCountGreaterThan(0);
         }
 
-        [Test]
-        public void Delivery_UpdateDeliveryChangeDeliveryDate_ReturnDelivery()
-        {
-            var dummyDelivery = GetAndAssertDelivery();
-
-            var deliveryDate = DateTime.UtcNow.AddDays(2);
-
-            var delivery = _unitOfWork.DeliveryRepository.QueryFirst(predicate: x => x.BarCode == dummyDelivery.BarCode);
-
-            delivery.Should().NotBeNull();
-
-            delivery.DeliveryDate = deliveryDate;
-
-            _unitOfWork.DeliveryRepository.Update(delivery);
-
-            _unitOfWork.SaveChanges();
-
-            delivery =  _unitOfWork.DeliveryRepository.QueryFirst(predicate: x => x.BarCode == dummyDelivery.BarCode);
-
-            delivery.Should().NotBeNull();
-
-            delivery.DeliveryDate.Should().Be(deliveryDate);
-        }
-
-        [Test]
-        public async Task Delivery_UpdateDeliveryChangeDeliveryDate_ReturnDeliveryAsync()
-        {
-            var dummyDelivery = await GetAndAssertDeliveryAsync();
-
-            var deliveryDate = DateTime.UtcNow.AddDays(2);
-
-            dummyDelivery.Should().NotBeNull();
-
-            dummyDelivery.DeliveryDate = deliveryDate;
-
-            await _unitOfWork.DeliveryRepository.UpdateAsync(dummyDelivery);
-
-            await _unitOfWork.SaveChangesAsync();
-
-            var updatedDelivery = await _unitOfWork.DeliveryRepository.QueryFirstAsync(
-                predicate: x => x.BarCode == dummyDelivery.BarCode);
-
-            updatedDelivery.Should().NotBeNull();
-
-            updatedDelivery.DeliveryDate.Should().Be(deliveryDate);
-        }
-
         [SetUp]
         public void Setup()
         {

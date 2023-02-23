@@ -39,9 +39,12 @@ public class DeliveryBuilder : IDeliveryBuilder
         return this;
     }
 
-    public async Task<Delivery> BuildAsync()
+    public Delivery Build()
     {
-        await this._deliveryDomainModel.AddBarcodeAsync(this._delivery);
+        this._deliveryDomainModel.AddBarcode(this._delivery);
+        this._deliveryDomainModel.AddVolumes(this._delivery);
+        this._deliveryDomainModel.AddCreatedInSystemEvent(this._delivery);
+
         return this._delivery;
     }
 }

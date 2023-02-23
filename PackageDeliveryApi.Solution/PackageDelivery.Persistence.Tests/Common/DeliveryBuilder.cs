@@ -1,5 +1,4 @@
-﻿using PackageDelivery.Domain.Extensions;
-using PackageDelivery.Persistence.Entities;
+﻿using PackageDelivery.Persistence.Entities;
 using PackageDelivery.Persistence.SmartEnums;
 
 namespace PackageDelivery.Persistence.Tests.Common
@@ -33,12 +32,9 @@ namespace PackageDelivery.Persistence.Tests.Common
             {
                 Amount = null,
                 ClientReference = $"test service",
-                DeliveryDate = DateTime.UtcNow.AddDays(1),
                 Eta = null,
                 Instructions = "Handle with care.",
                 NumberOfVolumes = 2,
-                PickingDate = null,
-                PinNumber = 4.ToRandomStringOfInts(),
                 PreferentialPeriod = null,
                 ReceiverAddress = "Rua Alto do Monte, nº 1",
                 ReceiverAddressCountryCode = "PT",

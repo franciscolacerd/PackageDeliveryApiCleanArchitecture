@@ -13,5 +13,5 @@ public interface IDeliveryBuilder
 
     DeliveryBuilder WithAttributes(AttributesModel attributes);
 
-    Task<Delivery> BuildAsync();
+    Delivery Build();
 }
