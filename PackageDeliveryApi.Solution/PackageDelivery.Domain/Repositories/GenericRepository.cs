@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using PackageDelivery.Persistence;
 using PackageDelivery.Persistence.Common;
 using PackageDelivery.Persistence.Contracts.Persistence;
 using PackageDelivery.Persistence.DTOs.Common;
@@ -7,7 +8,7 @@ using PackageDelivery.Persistence.Extensions;
 using PackageDelivery.Persistence.Repositories.Models.Pagination;
 using System.Linq.Expressions;
 
-namespace PackageDelivery.Persistence.Repositories
+namespace PackageDelivery.Domain.Repositories
 {
     public class GenericRepository<TEntity, TDto> : BaseRepository<TEntity>, IGenericRepository<TEntity, TDto>
         where TEntity : BaseDomainEntity

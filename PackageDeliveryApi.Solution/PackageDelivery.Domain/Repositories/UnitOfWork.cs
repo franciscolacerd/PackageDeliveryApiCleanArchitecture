@@ -1,10 +1,11 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore.Storage;
+using PackageDelivery.Persistence;
 using PackageDelivery.Persistence.Contracts.Persistence;
 using System.Security.Claims;
 
-namespace PackageDelivery.Persistence.Repositories
+namespace PackageDelivery.Domain.Repositories
 {
     public class UnitOfWork : IUnitOfWork
     {

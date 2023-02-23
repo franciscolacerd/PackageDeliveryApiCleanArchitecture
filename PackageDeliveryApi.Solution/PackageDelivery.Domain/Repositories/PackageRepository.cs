@@ -1,9 +1,10 @@
 ﻿using AutoMapper;
+using PackageDelivery.Persistence;
 using PackageDelivery.Persistence.Contracts.Persistence;
 using PackageDelivery.Persistence.DTOs;
 using PackageDelivery.Persistence.Entities;
 
-namespace PackageDelivery.Persistence.Repositories
+namespace PackageDelivery.Domain.Repositories
 {
     public class PackageRepository : GenericRepository<Package, PackageDto>, IPackageRepository
     {
