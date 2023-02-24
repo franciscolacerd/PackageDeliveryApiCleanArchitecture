@@ -3,6 +3,7 @@ using PackageDelivery.Application.Features.Delivery.Requests.Commands;
 using PackageDelivery.Application.Responses;
 using PackageDelivery.Application.Validation.Delivery;
 using PackageDelivery.Domain.Builders;
+using PackageDelivery.Domain.Constants;
 using PackageDelivery.Domain.Contracts.Persistence;
 using PackageDelivery.Domain.Exceptions;
 
@@ -14,25 +15,25 @@ public class CreateDeliveryCommandHandler : IRequestHandler<CreateDeliveryComman
 
     private readonly DeliveryValidator _deliveryValidator;
 
-    private readonly IDeliveryRepository _deliveryRepository;
+    private readonly IUnitOfWork _unitOfWork;
 
     public CreateDeliveryCommandHandler(
         IDeliveryBuilder deliveryBuilder,
         DeliveryValidator deliveryValidator,
-        IDeliveryRepository deliveryRepository)
+        IUnitOfWork unitOfWork)
     {
         this._deliveryBuilder = deliveryBuilder;
 
         this._deliveryValidator = deliveryValidator;
 
-        this._deliveryRepository = deliveryRepository;
+        this._unitOfWork = unitOfWork;
     }
 
     public async Task<CreateDeliveryResponse> Handle(CreateDeliveryCommand request, CancellationToken cancellationToken)
     {
         if (request == null || request.Delivery == null)
         {
-            throw new NullCreateDeliverytRequestException($"CreateDelivery request is null.");
+            throw new NullCreateDeliverytRequestException(ApiResponses.CreateDeliveryRequestIsNull);
         }
 
         var delivery = request.Delivery;
@@ -43,7 +44,12 @@ public class CreateDeliveryCommandHandler : IRequestHandler<CreateDeliveryComman
         {
             var errors = validationResult.Errors.Select(x => x.ErrorMessage).ToList();
 
-            return new CreateDeliveryResponse { Errors = errors, Success = false, Message = "Delivery created with errors." };
+            return new CreateDeliveryResponse
+            {
+                Errors = errors,
+                Success = false,
+                Message = ApiResponses.DeliveryCreatedWithErrors
+            };
         }
 
         var entity = this._deliveryBuilder
@@ -54,8 +60,15 @@ public class CreateDeliveryCommandHandler : IRequestHandler<CreateDeliveryComman
                           .WithAttributes(delivery.Attributes)
                           .Build();
 
-        var result = await this._deliveryRepository.AddAsync(entity);
+        var result = await this._unitOfWork.DeliveryRepository.AddAsync(entity);
 
-        return new CreateDeliveryResponse { BarCode = result.BarCode, Success = result.Id > 0, Message = "Delivery created with success." };
+        await this._unitOfWork.SaveChangesAsync();
+
+        return new CreateDeliveryResponse
+        {
+            BarCode = result.BarCode,
+            Success = result.Id > 0,
+            Message = ApiResponses.DeliveryCreatedWithSuccess
+        };
     }
 }

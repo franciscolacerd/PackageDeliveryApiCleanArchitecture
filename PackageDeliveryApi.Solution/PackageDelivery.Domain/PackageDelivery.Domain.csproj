@@ -16,8 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Constants\" />
-    <Folder Include="Constants\" />
     <Folder Include="Services\" />
     <Folder Include="Services\" />
   </ItemGroup>
