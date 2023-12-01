@@ -18,7 +18,26 @@ namespace PackageDelivery.Domain
             services.AddScoped<IDeliveryBuilder, DeliveryBuilder>();
 
             services.AddScoped(typeof(IGenericRepository<,>), typeof(GenericRepository<,>));
+
+            services.AddScoped<IApiLogRepository, ApiLogRepository>();
+
+            services.AddScoped<IDeliveryAttributeRepository, DeliveryAttributeRepository>();
+
+            services.AddScoped<IDeliveryDeliveryAttributeRepository, DeliveryDeliveryAttributeRepository>();
+
+            services.AddScoped<IDeliveryRepository, DeliveryRepository>();
+
+            services.AddScoped<IEventRepository, EventRepository>();
+
+            services.AddScoped<IEventTypeRepository, EventTypeRepository>();
+
+            services.AddScoped<IExceptionLogRepository, ExceptionLogRepository>();
+
+            services.AddScoped<IPackageRepository, PackageRepository>();
+
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            services.AddHttpContextAccessor();
 
             return services;
         }

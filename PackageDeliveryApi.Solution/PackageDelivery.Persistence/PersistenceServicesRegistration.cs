@@ -13,8 +13,9 @@ namespace PackageDelivery.Persistence
         {
             services.AddHttpContextAccessor();
 
-            services.AddIdentity<User, IdentityRole<long>>()
-                .AddUserManager<UserManager<User>>()
+            services
+                .AddIdentityApiEndpoints<User>()
+                .AddEntityFrameworkStores<PackageDeliveryDbContext>()
                 .AddDefaultTokenProviders();
 
             services.AddDbContext<PackageDeliveryDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("DbContext"),

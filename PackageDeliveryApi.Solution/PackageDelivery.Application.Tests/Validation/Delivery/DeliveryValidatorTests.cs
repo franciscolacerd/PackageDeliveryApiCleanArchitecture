@@ -21,6 +21,12 @@ namespace PackageDelivery.Application.Tests.Validation.Delivery
             this._validator = this._serviceProvider.GetRequiredService<DeliveryValidator>();
         }
 
+        [TearDown]
+        public async Task TearDown()
+        {
+            await _serviceProvider.DisposeAsync();
+        }
+
         [Test]
         public async Task Should_ValidateDelivery_ReturnTrue()
         {

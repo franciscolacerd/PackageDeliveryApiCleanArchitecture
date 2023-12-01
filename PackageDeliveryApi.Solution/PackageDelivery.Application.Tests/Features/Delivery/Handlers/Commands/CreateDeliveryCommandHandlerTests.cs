@@ -21,6 +21,12 @@ public class CreateDeliveryCommandHandlerTests
         this._handler = this._serviceProvider.GetRequiredService<IRequestHandler<CreateDeliveryCommand, CreateDeliveryResponse>>();
     }
 
+    [OneTimeTearDown]
+    public async Task TearDown()
+    {
+        await _serviceProvider.DisposeAsync();
+    }
+
     [Test]
     public async Task Handle_StateUnderTest_ExpectedBehavior()
     {

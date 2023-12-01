@@ -1,6 +1,5 @@
-﻿using FluentValidation;
-using MediatR;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
+using PackageDelivery.Application.Validation.Delivery;
 using System.Reflection;
 
 namespace PackageDelivery.Application
@@ -9,9 +8,11 @@ namespace PackageDelivery.Application
     {
         public static IServiceCollection ConfigureApplicationServices(this IServiceCollection services)
         {
-            services.AddMediatR(Assembly.GetExecutingAssembly());
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 
-            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+            services.AddScoped<AttributesValidator>();
+            services.AddScoped<DeliveryValidator>();
+            services.AddScoped<DetailsValidator>();
 
             return services;
         }

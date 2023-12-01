@@ -21,6 +21,12 @@ namespace PackageDelivery.Application.Tests.Queries
             _handler = _serviceProvider.GetRequiredService<IRequestHandler<GetUserDeliveriesRequest, UserDeliveriesResponse>>();
         }
 
+        [TearDown]
+        public async Task TearDown()
+        {
+            await _serviceProvider.DisposeAsync();
+        }
+
         [Test]
         public async Task Should_CreateDelivery_ReturnSuccessTrue()
         {

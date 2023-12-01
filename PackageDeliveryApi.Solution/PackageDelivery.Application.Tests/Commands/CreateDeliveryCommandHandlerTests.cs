@@ -22,6 +22,12 @@ namespace PackageDelivery.Application.Tests.Commands
             _handler = _serviceProvider.GetRequiredService<IRequestHandler<CreateDeliveryCommand, BaseCommandResponse>>();
         }
 
+        [TearDown]
+        public async Task TearDown()
+        {
+            await _serviceProvider.DisposeAsync();
+        }
+
         [Test]
         public async Task Should_CreateDelivery_ReturnSuccessTrue()
         {

@@ -16,15 +16,12 @@ namespace PackageDelivery.Api.Middleware
     {
         private readonly RequestDelegate _next;
 
-        private readonly IUnitOfWork _unitOfWork;
-
-        public RequestResponseLoggingMiddleware(RequestDelegate next, IUnitOfWork unitOfWork)
+        public RequestResponseLoggingMiddleware(RequestDelegate next)
         {
             _next = next;
-            _unitOfWork = unitOfWork;
         }
 
-        public async Task Invoke(HttpContext context)
+        public async Task Invoke(HttpContext context, IUnitOfWork unitOfWork)
         {
             var request = await FormatRequest(context.Request);
 
@@ -38,7 +35,7 @@ namespace PackageDelivery.Api.Middleware
 
                 var response = await FormatResponse(context.Response);
 
-                await _unitOfWork.ApiLogRepository.AddAsync(new ApiLog
+                await unitOfWork.ApiLogRepository.AddAsync(new ApiLog
                 {
                     Scheme = context?.Request?.Scheme,
                     Host = context?.Request?.Host.Value,
@@ -50,7 +47,7 @@ namespace PackageDelivery.Api.Middleware
                     CreatedBy = nameof(RequestResponseLoggingMiddleware)
                 });
 
-                await _unitOfWork.SaveChangesAsync();
+                await unitOfWork.SaveChangesAsync();
 
                 await responseBody.CopyToAsync(originalBodyStream);
             }

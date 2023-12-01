@@ -28,9 +28,9 @@ public class DeliveryValidator : AbstractValidator<DeliveryModel>
 
         RuleFor(x => x.Details).SetValidator(this._detailsValidator).When(x => x.Details != null);
 
-        RuleFor(x => x).Must((shipment) => shipment?.Details?.Amount > 0 ? shipment?.Attributes?.CashOnDelivery == true : true).WithMessage("If amount is not null, CashOnDelivery attribute must be selected.");
+        RuleFor(x => x).Must((shipment) => !(shipment?.Details?.Amount > 0) || shipment?.Attributes?.CashOnDelivery == true).WithMessage("If amount is not null, CashOnDelivery attribute must be selected.");
 
-        RuleFor(x => x).Must((shipment) => shipment?.Attributes?.CashOnDelivery == true ? shipment?.Details?.Amount > 0 : true).WithMessage("If CashOnDelivery attribute is selected, amount must not be null.");
+        RuleFor(x => x).Must((shipment) => shipment?.Attributes?.CashOnDelivery != true || shipment?.Details?.Amount > 0).WithMessage("If CashOnDelivery attribute is selected, amount must not be null.");
 
         RuleFor(x => x.Sender).SetValidator(new SenderValidator(this._context, "Sender")).When(x => x.Sender != null);
 

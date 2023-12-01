@@ -12,6 +12,20 @@ namespace PackageDelivery.Persistence.Tests
 
         private readonly string _receiverName = "francisco lacerda";
 
+        [SetUp]
+        public void Setup()
+        {
+            _serviceProvider = Bootstrapper.Bind();
+
+            _unitOfWork = _serviceProvider.GetRequiredService<IUnitOfWork>();
+        }
+
+        [TearDown]
+        public async Task TearDown()
+        {
+            await _serviceProvider.DisposeAsync();
+        }
+
         [Test]
         public void Delivery_CreateDeliveryWithPackages_ReturnDelivery()
         {
@@ -364,14 +378,6 @@ namespace PackageDelivery.Persistence.Tests
             pagedDeliveries.Results.First().Packages.Should().NotBeNull();
 
             pagedDeliveries.Results.First().Packages.Should().HaveCountGreaterThan(0);
-        }
-
-        [SetUp]
-        public void Setup()
-        {
-            _serviceProvider = Bootstrapper.Bind();
-
-            _unitOfWork = _serviceProvider.GetRequiredService<IUnitOfWork>();
         }
     }
 }

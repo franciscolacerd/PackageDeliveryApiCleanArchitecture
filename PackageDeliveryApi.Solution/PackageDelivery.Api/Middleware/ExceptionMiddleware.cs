@@ -12,16 +12,13 @@ namespace PackageDelivery.Api.Middleware
 
         private readonly ILogger _logger;
 
-        private readonly IUnitOfWork _unitOfWork;
-
-        public ExceptionMiddleware(RequestDelegate next, ILogger<ExceptionMiddleware> logger, IUnitOfWork unitOfWork)
+        public ExceptionMiddleware(RequestDelegate next, ILogger<ExceptionMiddleware> logger)
         {
             _logger = logger;
             _next = next;
-            _unitOfWork = unitOfWork;
         }
 
-        public async Task InvokeAsync(HttpContext httpContext)
+        public async Task InvokeAsync(HttpContext httpContext, IUnitOfWork unitOfWork)
         {
             try
             {
@@ -31,14 +28,14 @@ namespace PackageDelivery.Api.Middleware
             {
                 _logger.LogError(ex, $"Something went wrong: {ex}");
 
-                await _unitOfWork.ExceptionLogRepository.AddAsync(new ExceptionLog
+                await unitOfWork.ExceptionLogRepository.AddAsync(new ExceptionLog
                 {
                     CreatedDateUtc = DateTime.UtcNow,
                     CreatedBy = nameof(ExceptionMiddleware),
                     Exception = ex.ToJson()
                 });
 
-                await _unitOfWork.SaveChangesAsync();
+                await unitOfWork.SaveChangesAsync();
 
                 await HandleExceptionAsync(httpContext, ex);
             }
