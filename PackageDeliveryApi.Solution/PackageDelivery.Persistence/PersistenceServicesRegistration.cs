@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PackageDelivery.Persistence.Entities;
+using PackageDelivery.Persistence.Stores;
 using System.Reflection;
 
 namespace PackageDelivery.Persistence
@@ -13,8 +14,26 @@ namespace PackageDelivery.Persistence
         {
             services.AddHttpContextAccessor();
 
-            services
-                .AddIdentityApiEndpoints<User>()
+            services.AddIdentityApiEndpoints<User>(options =>
+                {
+                    // Password settings
+                    options.Password.RequireDigit = false;
+                    options.Password.RequiredLength = 8;
+                    options.Password.RequireNonAlphanumeric = false;
+                    options.Password.RequireUppercase = false;
+                    options.Password.RequireLowercase = false;
+                    options.Password.RequiredUniqueChars = 6;
+
+                    // Lockout settings
+                    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
+                    options.Lockout.MaxFailedAccessAttempts = 5;
+                    options.Lockout.AllowedForNewUsers = false;
+
+                    // User settings
+                    options.User.RequireUniqueEmail = true;
+                })
+                .AddUserManager<ApplicationUserManager>()
+                .AddSignInManager<ApplicationSignInManager>()
                 .AddEntityFrameworkStores<PackageDeliveryDbContext>()
                 .AddDefaultTokenProviders();
 

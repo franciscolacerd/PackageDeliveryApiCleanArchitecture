@@ -8,7 +8,7 @@ namespace PackageDelivery.Persistence.Stores
     public class ApplicationUserManager : UserManager<User>
     {
         public ApplicationUserManager(
-            ApplicationUserStore store,
+            IUserStore<User> store,
             IOptions<IdentityOptions> optionsAccessor,
             IPasswordHasher<User> passwordHasher,
             IEnumerable<IUserValidator<User>> userValidators,

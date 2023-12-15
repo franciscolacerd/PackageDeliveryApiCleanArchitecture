@@ -80,14 +80,14 @@ namespace PackageDelivery.Domain.Repositories
         {
             var username = _httpContextAccessor?.HttpContext?.User?.FindFirst(ClaimTypes.Name)?.Value;
 
-            return await _context.SaveChangesAsync(username, cancellationToken);
+            return await _context.SaveChangesAsync(username!, cancellationToken);
         }
 
         public int Complete()
         {
             var username = _httpContextAccessor?.HttpContext?.User?.FindFirst(ClaimTypes.Name)?.Value;
 
-            return _context.SaveChanges(username);
+            return _context.SaveChanges(username!);
         }
 
         public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)

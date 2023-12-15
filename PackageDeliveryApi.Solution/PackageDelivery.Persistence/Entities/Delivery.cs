@@ -40,8 +40,8 @@ namespace PackageDelivery.Persistence.Entities
         public string? ReceiverFixedInstructions { get; set; }
         public string BarCode { get; set; } = null!;
         public string? Eta { get; set; }
-        public virtual ICollection<Package> Packages { get; set; } = null!;
+        public virtual ICollection<Package> Packages { get; set; }
         public virtual ICollection<DeliveryDeliveryAttribute> DeliveryDeliveryAttributes { get; set; }
-        public virtual ICollection<Event> Events { get; set; } = null!;
+        public virtual ICollection<Event> Events { get; set; }
     }
 }

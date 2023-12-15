@@ -4,7 +4,6 @@ using PackageDelivery.Api.Startup;
 using PackageDelivery.Application;
 using PackageDelivery.Domain;
 using PackageDelivery.Persistence;
-using PackageDelivery.Persistence.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,6 +30,5 @@ app.UseAuthorization();
 app.UseMiddleware<TokenProviderMiddleware>(Options.Create(tokenProviderSettings));
 app.UseEnableRequestRewind();
 app.MapControllers();
-app.MapGroup("/account").MapIdentityApi<User>();
 
 app.Run();

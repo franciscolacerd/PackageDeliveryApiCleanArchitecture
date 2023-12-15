@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 
@@ -6,6 +7,13 @@ namespace PackageDelivery.Persistence
 {
     public class PackageDeliveryDbContextFactory : IDesignTimeDbContextFactory<PackageDeliveryDbContext>
     {
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
+        public PackageDeliveryDbContextFactory(IHttpContextAccessor httpContextAccessor)
+        {
+            this._httpContextAccessor = httpContextAccessor;
+        }
+
         public PackageDeliveryDbContext CreateDbContext(string[] args)
         {
             IConfigurationRoot configuration = new ConfigurationBuilder()
@@ -18,7 +26,7 @@ namespace PackageDelivery.Persistence
 
             builder.UseSqlServer(connectionString);
 
-            return new PackageDeliveryDbContext(builder.Options);
+            return new PackageDeliveryDbContext(builder.Options, this._httpContextAccessor);
         }
     }
 }
