@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using PackageDelivery.Application.Features.Delivery.Handlers.Commands;
 using PackageDelivery.Application.Validation.Delivery;
-using System.Reflection;
 
 namespace PackageDelivery.Application
 {
@@ -8,7 +8,7 @@ namespace PackageDelivery.Application
     {
         public static IServiceCollection ConfigureApplicationServices(this IServiceCollection services)
         {
-            services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(CreateDeliveryCommandHandler).Assembly));
 
             services.AddScoped<AttributesValidator>();
             services.AddScoped<DeliveryValidator>();

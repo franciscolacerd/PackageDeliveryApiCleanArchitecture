@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PackageDelivery.Application;
+using PackageDelivery.Domain;
 
 namespace PackageDelivery.Persistence.Tests.Strapper
 {
@@ -26,6 +27,8 @@ namespace PackageDelivery.Persistence.Tests.Strapper
             var configurationRoot = GetIConfigurationRoot(TestContext.CurrentContext.TestDirectory);
 
             services.ConfigurePersistenceServices(configurationRoot);
+
+            services.ConfigureDomainServices();
 
             services.ConfigureApplicationServices();
 

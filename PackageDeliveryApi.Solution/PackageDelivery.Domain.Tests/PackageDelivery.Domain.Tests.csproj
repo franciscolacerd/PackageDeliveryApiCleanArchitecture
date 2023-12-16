@@ -24,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PackageDelivery.Application\PackageDelivery.Application.csproj" />
     <ProjectReference Include="..\PackageDelivery.Domain\PackageDelivery.Domain.csproj" />
     <ProjectReference Include="..\PackageDelivery.Persistence\PackageDelivery.Persistence.csproj" />
   </ItemGroup>

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using PackageDelivery.Application;
 using PackageDelivery.Persistence;
 
 namespace PackageDelivery.Domain.Tests.Strapper
@@ -28,6 +29,8 @@ namespace PackageDelivery.Domain.Tests.Strapper
             services.ConfigurePersistenceServices(configurationRoot);
 
             services.ConfigureDomainServices();
+
+            services.ConfigureApplicationServices();
 
             services.AddSingleton<IConfiguration>(configurationRoot);
 

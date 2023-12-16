@@ -2,7 +2,7 @@ using FluentAssertions;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using PackageDelivery.Application.Features.Delivery.Requests.Commands;
-using PackageDelivery.Application.Responses.Common;
+using PackageDelivery.Application.Responses;
 using PackageDelivery.Application.Tests.Strapper;
 using PackageDelivery.Domain.Models.Delivery;
 
@@ -12,14 +12,14 @@ namespace PackageDelivery.Application.Tests.Commands
     {
         private ServiceProvider _serviceProvider;
 
-        private IRequestHandler<CreateDeliveryCommand, BaseCommandResponse> _handler;
+        private IRequestHandler<CreateDeliveryCommand, CreateDeliveryResponse> _handler;
 
         [SetUp]
         public void Setup()
         {
             _serviceProvider = Bootstrapper.Bind();
 
-            _handler = _serviceProvider.GetRequiredService<IRequestHandler<CreateDeliveryCommand, BaseCommandResponse>>();
+            _handler = _serviceProvider.GetRequiredService<IRequestHandler<CreateDeliveryCommand, CreateDeliveryResponse>>();
         }
 
         [TearDown]
@@ -41,7 +41,7 @@ namespace PackageDelivery.Application.Tests.Commands
 
             result.Should().NotBeNull();
 
-            result.Should().BeOfType<BaseCommandResponse>();
+            result.Should().BeOfType<CreateDeliveryResponse>();
 
             result.Success.Should().BeTrue();
         }
