@@ -8,6 +8,7 @@ namespace PackageDelivery.Domain.DomainModels.Delivery
     public class DeliveryDomainModel : IDeliveryDomainModel
     {
         private readonly DateTime _datetimeUtc = DateTime.UtcNow;
+
         private string _user = string.Empty;
 
         public void AddUser(string user)
@@ -21,33 +22,25 @@ namespace PackageDelivery.Domain.DomainModels.Delivery
 
             var deliveryAttributes = new List<DeliveryDeliveryAttribute>();
 
-            foreach (var attribute in Persistence.Common.Enumeration.GetAll<DeliveryAttributes>())
+            foreach (var attributeId in Persistence.Common.Enumeration
+                                        .GetAll<DeliveryAttributes>()
+                                        .Select(attribute => attribute.Id))
             {
                 bool isMissingAttribute = false;
 
-                switch (attribute.Id)
+                isMissingAttribute = attributeId switch
                 {
-                    case 1:
-                        isMissingAttribute = attributes.Pod;
-                        break;
-
-                    case 2:
-                        isMissingAttribute = attributes.SameDay;
-                        break;
-
-                    case 3:
-                        isMissingAttribute = attributes.CashOnDelivery;
-                        break;
-
-                    default:
-                        break;
-                }
+                    1 => attributes.Pod,
+                    2 => attributes.SameDay,
+                    3 => attributes.CashOnDelivery,
+                    _ => isMissingAttribute
+                };
 
                 if (isMissingAttribute)
                 {
                     deliveryAttributes.Add(new DeliveryDeliveryAttribute
                     {
-                        DeliveryAttributeId = attribute.Id,
+                        DeliveryAttributeId = attributeId,
                         CreatedBy = this._user,
                         CreatedDateUtc = this._datetimeUtc
                     });
@@ -83,7 +76,7 @@ namespace PackageDelivery.Domain.DomainModels.Delivery
             delivery.SenderContactPhoneNumber = sender?.Contact?.PhoneNumber;
             delivery.SenderContactEmail = sender?.Contact?.Email;
 
-            if (sender?.Address == null) return;
+            if (sender?.Address is null) return;
 
             delivery.SenderAddress = sender?.Address?.AddressLine;
             delivery.SenderAddressPlace = sender?.Address?.Place;

@@ -48,7 +48,7 @@ namespace PackageDelivery.Domain.Extensions
 
         public static decimal? ToNullableDecimal(this object obj)
         {
-            if (obj == null)
+            if (obj is null)
             {
                 return null;
             }
@@ -83,7 +83,7 @@ namespace PackageDelivery.Domain.Extensions
 
         public static DateTime? ToNullableDateTime(this object obj)
         {
-            if (obj == null)
+            if (obj is null)
             {
                 return null;
             }
@@ -105,7 +105,7 @@ namespace PackageDelivery.Domain.Extensions
 
         public static string ToJson(this object obj, bool lowerCamelCase = true, short? decimalPlaces = null)
         {
-            if (obj == null)
+            if (obj is null)
             {
                 return null;
             }
@@ -135,7 +135,7 @@ namespace PackageDelivery.Domain.Extensions
 
         public static T DeserializeTo<T>(this object obj)
         {
-            if (obj == null)
+            if (obj is null)
             {
                 return default(T);
             }
@@ -173,7 +173,7 @@ namespace PackageDelivery.Domain.Extensions
 
         public static void TrimAllProperties<T>(this T obj)
         {
-            if (obj == null)
+            if (obj is null)
             {
                 return;
             }
@@ -190,13 +190,13 @@ namespace PackageDelivery.Domain.Extensions
 
         public static IDictionary<string, string> ToDictionary(this object metaToken)
         {
-            if (metaToken == null)
+            if (metaToken is null)
             {
                 return null;
             }
 
             JToken jToken = metaToken as JToken;
-            if (jToken == null)
+            if (jToken is null)
             {
                 return JObject.FromObject(metaToken).ToDictionary();
             }
@@ -217,12 +217,12 @@ namespace PackageDelivery.Domain.Extensions
             }
 
             JValue jValue = jToken as JValue;
-            if (jValue?.Value == null)
+            if (jValue?.Value is null)
             {
                 return null;
             }
 
-            string value = ((jValue == null || jValue.Type != JTokenType.Date) ? jValue?.ToString(CultureInfo.InvariantCulture) : jValue?.ToString("o", CultureInfo.InvariantCulture));
+            string value = ((jValue is null || jValue.Type != JTokenType.Date) ? jValue?.ToString(CultureInfo.InvariantCulture) : jValue?.ToString("o", CultureInfo.InvariantCulture));
             return new Dictionary<string, string> { { jToken.Path, value } };
         }
     }

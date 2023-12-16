@@ -45,7 +45,7 @@ namespace PackageDelivery.Domain.Common
         {
             var entityToUpdate = await GetByIdAsync(entity.Id);
 
-            if (entityToUpdate == null)
+            if (entityToUpdate is null)
                 return;
 
             _dbContext.Entry(entityToUpdate).CurrentValues.SetValues(entity);
@@ -55,7 +55,7 @@ namespace PackageDelivery.Domain.Common
         {
             var entityToUpdate = GetById(entity.Id);
 
-            if (entityToUpdate == null)
+            if (entityToUpdate is null)
                 return;
 
             _dbContext.Entry(entityToUpdate).CurrentValues.SetValues(entity);
@@ -65,7 +65,7 @@ namespace PackageDelivery.Domain.Common
         {
             var entitytoDelete = await GetByIdAsync(id);
 
-            if (entitytoDelete == null)
+            if (entitytoDelete is null)
                 return;
 
             _dbContext.Remove(entitytoDelete);
@@ -75,7 +75,7 @@ namespace PackageDelivery.Domain.Common
         {
             var entitytoDelete = GetById(id);
 
-            if (entitytoDelete == null)
+            if (entitytoDelete is null)
                 return;
 
             _dbContext.Remove(entitytoDelete);
@@ -101,7 +101,7 @@ namespace PackageDelivery.Domain.Common
         {
             var key = _dbContext.Model.FindEntityType(typeof(TEntity))?.FindPrimaryKey()?.Properties.Single().Name;
 
-            if (key == null) { return null; }
+            if (key is null) { return null; }
 
             return await _dbContext
                 .Set<TEntity>()
@@ -113,7 +113,7 @@ namespace PackageDelivery.Domain.Common
         {
             var key = _dbContext.Model.FindEntityType(typeof(TEntity))?.FindPrimaryKey()?.Properties.Single().Name;
 
-            if (key == null) { return null; }
+            if (key is null) { return null; }
 
             return _dbContext
                 .Set<TEntity>()

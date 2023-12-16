@@ -31,7 +31,7 @@ public class CreateDeliveryCommandHandler : IRequestHandler<CreateDeliveryComman
 
     public async Task<CreateDeliveryResponse> Handle(CreateDeliveryCommand request, CancellationToken cancellationToken)
     {
-        if (request == null || request.Delivery == null)
+        if (request is null || request.Delivery is null)
         {
             throw new NullCreateDeliverytRequestException(ApiResponses.CreateDeliveryRequestIsNull);
         }

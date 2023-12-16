@@ -57,7 +57,7 @@ namespace PackageDelivery.Api.Middleware
 
             var identity = await GetIdentityAsync(username.ToString().Trim(), password.ToString().Trim(), now);
 
-            if (identity == null)
+            if (identity is null)
             {
                 context.Response.StatusCode = 400;
                 await context.Response.WriteAsync(JsonConvert.SerializeObject(new { error = "Invalid username or password.", success = false }, new JsonSerializerSettings { Formatting = Formatting.Indented }));
@@ -94,7 +94,7 @@ namespace PackageDelivery.Api.Middleware
                   {
                       var user = await _applicationUserManager.Users.Where(x => x.UserName.Equals(username)).FirstOrDefaultAsync();
 
-                      if (user == null)
+                      if (user is null)
                       {
                           return await Task.FromResult<ClaimsIdentity>(null);
                       }

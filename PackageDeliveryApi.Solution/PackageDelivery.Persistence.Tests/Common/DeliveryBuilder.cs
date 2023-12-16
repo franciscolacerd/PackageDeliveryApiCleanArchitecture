@@ -90,7 +90,7 @@ namespace PackageDelivery.Persistence.Tests.Common
 
         public DeliveryBuilder WithPod()
         {
-            if (_delivery.DeliveryDeliveryAttributes == null)
+            if (_delivery.DeliveryDeliveryAttributes is null)
             {
                 _delivery.DeliveryDeliveryAttributes = new List<DeliveryDeliveryAttribute>();
             }
@@ -104,7 +104,7 @@ namespace PackageDelivery.Persistence.Tests.Common
 
         public DeliveryBuilder WithSameDay()
         {
-            if (_delivery.DeliveryDeliveryAttributes == null)
+            if (_delivery.DeliveryDeliveryAttributes is null)
             {
                 _delivery.DeliveryDeliveryAttributes = new List<DeliveryDeliveryAttribute>();
             }
@@ -118,7 +118,7 @@ namespace PackageDelivery.Persistence.Tests.Common
 
         public DeliveryBuilder WithCashOnDelivery()
         {
-            if (_delivery.DeliveryDeliveryAttributes == null)
+            if (_delivery.DeliveryDeliveryAttributes is null)
             {
                 _delivery.DeliveryDeliveryAttributes = new List<DeliveryDeliveryAttribute>();
             }

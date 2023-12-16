@@ -24,7 +24,7 @@ namespace PackageDelivery.Application.Validation.Delivery
 
         private bool ValidateZipCode(AddressModel address)
         {
-            if (address == null) { return false; }
+            if (address is null) { return false; }
 
             return string.IsNullOrEmpty(address?.CountryCode) || address?.CountryCode?.ToLower() == "pt" || address?.CountryCode?.ToLower() == "prt"
                 ? Regex.IsMatch(address.ZipCode, "^[1-9]\\d{3}-\\d{3}$")
