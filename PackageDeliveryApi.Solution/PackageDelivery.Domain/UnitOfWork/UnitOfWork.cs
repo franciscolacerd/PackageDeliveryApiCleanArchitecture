@@ -2,10 +2,11 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore.Storage;
 using PackageDelivery.Domain.Contracts.Persistence;
+using PackageDelivery.Domain.Repositories;
 using PackageDelivery.Persistence;
 using System.Security.Claims;
 
-namespace PackageDelivery.Domain.Repositories
+namespace PackageDelivery.Domain.UnitOfWork
 {
     public class UnitOfWork : IUnitOfWork
     {

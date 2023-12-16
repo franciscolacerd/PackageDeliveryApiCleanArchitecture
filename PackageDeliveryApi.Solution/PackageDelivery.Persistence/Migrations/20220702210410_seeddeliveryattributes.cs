@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations;
 using PackageDelivery.Persistence.Entities;
-using PackageDelivery.Persistence.SmartEnums;
 using System.Security.Claims;
 
 #nullable disable
@@ -39,21 +38,21 @@ namespace PackageDelivery.Persistence.Migrations
                         new List<DeliveryAttribute>() {
                             new DeliveryAttribute()
                             {
-                                Id = DeliveryAttributes.Pod.Id,
+                                Id = 1,
                                 DeliveryAttributeENG = "Pod",
                                 DeliveryAttributeES = "Pod",
                                 DeliveryAttributePT = "Pod"
                             },
                             new DeliveryAttribute()
                             {
-                                Id = DeliveryAttributes.SameDay.Id,
+                                Id = 2,
                                 DeliveryAttributeENG = "Same Day",
                                 DeliveryAttributeES = "Mismo día",
                                 DeliveryAttributePT = "Mesmo dia"
                             },
                             new DeliveryAttribute()
                             {
-                                Id = DeliveryAttributes.CashOnDelivery.Id,
+                                Id = 3,
                                 DeliveryAttributeENG = "Cash On Delivery",
                                 DeliveryAttributeES = "Colección",
                                 DeliveryAttributePT = "Cobrança"

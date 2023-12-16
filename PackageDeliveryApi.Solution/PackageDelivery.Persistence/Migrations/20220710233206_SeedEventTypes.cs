@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations;
 using PackageDelivery.Persistence.Entities;
-using PackageDelivery.Persistence.SmartEnums;
 using System.Security.Claims;
 
 #nullable disable
@@ -39,49 +38,49 @@ namespace PackageDelivery.Persistence.Migrations
                         new List<EventType>() {
                             new EventType()
                             {
-                                Id = EventTypes.CreatedDelivery.Id,
+                                Id = 1,
                                 EventTypeENG = "Created delivery",
                                 EventTypeES = "Entrega creada",
                                 EventTypePT = "Entrega criada"
                             },
                             new EventType()
                             {
-                                Id = EventTypes.PickedupByCarrier.Id,
+                                Id = 2,
                                 EventTypeENG = "Pickedup by carrier",
                                 EventTypeES = "Recogido por el transportista",
                                 EventTypePT = "Apanhado por transportadora"
                             },
                             new EventType()
                             {
-                                Id = EventTypes.InTransit.Id,
+                                Id = 3,
                                 EventTypeENG = "In transit",
                                 EventTypeES = "En tránsito",
                                 EventTypePT = "Em trânsito"
                             },
                             new EventType()
                             {
-                                Id = EventTypes.DeliveredToReceiver.Id,
+                                Id = 4,
                                 EventTypeENG = "Delivered to receiver",
                                 EventTypeES = "Entregado al receptor",
                                 EventTypePT = "Entregue ao recetor"
                             },
                             new EventType()
                             {
-                                Id = EventTypes.UnableToMakePickup.Id,
+                                Id = 5,
                                 EventTypeENG = "Unable to make pickup",
                                 EventTypeES = "No se puede hacer la recogida",
                                 EventTypePT = "Incapaz de fazer a recolha"
                             },
                             new EventType()
                             {
-                                Id = EventTypes.UnableToMakeDelivery.Id,
+                                Id = 6,
                                 EventTypeENG = "Unable to make delivery",
                                 EventTypeES = "No se puede realizar la entrega",
                                 EventTypePT = "Incapaz de fazer a entrega"
                             },
                             new EventType()
                             {
-                                Id = EventTypes.ReturnedToSender.Id,
+                                Id = 7,
                                 EventTypeENG = "Returned to sender",
                                 EventTypeES = "Devuelto al remitente",
                                 EventTypePT = "Devolvido ao remetente"

@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using PackageDelivery.Domain.Common;
 using PackageDelivery.Domain.Contracts.Persistence;
 using PackageDelivery.Domain.DTOs.Common;
 using PackageDelivery.Domain.Extensions;
@@ -9,7 +8,7 @@ using PackageDelivery.Persistence;
 using PackageDelivery.Persistence.Common;
 using System.Linq.Expressions;
 
-namespace PackageDelivery.Domain.Repositories
+namespace PackageDelivery.Domain.Common
 {
     public class GenericRepository<TEntity, TDto> : BaseRepository<TEntity>, IGenericRepository<TEntity, TDto>
         where TEntity : BaseDomainEntity
@@ -221,11 +220,6 @@ namespace PackageDelivery.Domain.Repositories
             return await QueryFirstAsync(predicate, null, null);
         }
 
-        public TEntity? QueryFirst(Expression<Func<TEntity, bool>>? predicate = null)
-        {
-            return QueryFirst(predicate, null, null);
-        }
-
         public async Task<TEntity?> QueryFirstAsync(
             Expression<Func<TEntity, bool>>? predicate = null,
             params Expression<Func<TEntity, object>>[]? includes)
@@ -233,15 +227,6 @@ namespace PackageDelivery.Domain.Repositories
             var _query = SetFiltersToQuery(TrackChanges.AsNoTracking, predicate, includes);
 
             return await _query.FirstOrDefaultAsync();
-        }
-
-        public TEntity? QueryFirst(
-            Expression<Func<TEntity, bool>>? predicate = null,
-            params Expression<Func<TEntity, object>>[]? includes)
-        {
-            var _query = SetFiltersToQuery(TrackChanges.AsNoTracking, predicate, includes);
-
-            return _query.FirstOrDefault();
         }
 
         public async Task<TEntity?> QueryFirstAsync(
@@ -252,6 +237,20 @@ namespace PackageDelivery.Domain.Repositories
             var _query = SetFiltersToQuery(TrackChanges.AsNoTracking, predicate, includes, orderBy);
 
             return await _query.FirstOrDefaultAsync();
+        }
+
+        public TEntity? QueryFirst(Expression<Func<TEntity, bool>>? predicate = null)
+        {
+            return QueryFirst(predicate, null, null);
+        }
+
+        public TEntity? QueryFirst(
+            Expression<Func<TEntity, bool>>? predicate = null,
+            params Expression<Func<TEntity, object>>[]? includes)
+        {
+            var _query = SetFiltersToQuery(TrackChanges.AsNoTracking, predicate, includes);
+
+            return _query.FirstOrDefault();
         }
 
         public TEntity? QueryFirst(

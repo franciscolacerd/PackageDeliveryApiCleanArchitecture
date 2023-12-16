@@ -1,21 +1,14 @@
-﻿using PackageDelivery.Domain.Contracts.Persistence;
-using PackageDelivery.Domain.Extensions;
+﻿using PackageDelivery.Domain.Extensions;
 using PackageDelivery.Domain.Models.Delivery;
+using PackageDelivery.Domain.SmartEnums;
 using PackageDelivery.Persistence.Entities;
-using PackageDelivery.Persistence.SmartEnums;
 
 namespace PackageDelivery.Domain.DomainModels.Delivery
 {
     public class DeliveryDomainModel : IDeliveryDomainModel
     {
-        private DateTime _datetimeUtc = DateTime.UtcNow;
+        private readonly DateTime _datetimeUtc = DateTime.UtcNow;
         private string _user = string.Empty;
-        private readonly IEventTypeRepository _eventTypeRepository;
-
-        public DeliveryDomainModel(IEventTypeRepository eventTypeRepository)
-        {
-            this._eventTypeRepository = eventTypeRepository;
-        }
 
         public void AddUser(string user)
         {
@@ -24,11 +17,11 @@ namespace PackageDelivery.Domain.DomainModels.Delivery
 
         public void AddAttributes(Persistence.Entities.Delivery delivery, AttributesModel attributes)
         {
-            if (attributes == null) return;
+            if (attributes is null) return;
 
             var deliveryAttributes = new List<DeliveryDeliveryAttribute>();
 
-            foreach (var attribute in DeliveryAttributes.GetAll<DeliveryAttributes>())
+            foreach (var attribute in Persistence.Common.Enumeration.GetAll<DeliveryAttributes>())
             {
                 bool isMissingAttribute = false;
 
@@ -66,7 +59,7 @@ namespace PackageDelivery.Domain.DomainModels.Delivery
 
         public void AddDetails(Persistence.Entities.Delivery delivery, DetailsModel details)
         {
-            if (details == null) return;
+            if (details is null) return;
 
             delivery.ClientReference = details.ClientReference;
             delivery.NumberOfVolumes =  details.NumberOfVolumes;
@@ -80,11 +73,11 @@ namespace PackageDelivery.Domain.DomainModels.Delivery
 
         public void AddSender(Persistence.Entities.Delivery delivery, SenderModel sender)
         {
-            if (sender == null) return;
+            if (sender is null) return;
 
             delivery.SenderName = sender.Name;
 
-            if (sender?.Contact == null) return;
+            if (sender?.Contact is null) return;
 
             delivery.SenderContactName = sender?.Contact?.Name;
             delivery.SenderContactPhoneNumber = sender?.Contact?.PhoneNumber;
@@ -92,31 +85,31 @@ namespace PackageDelivery.Domain.DomainModels.Delivery
 
             if (sender?.Address == null) return;
 
-            delivery.SenderAddress = sender.Address.AddressLine;
-            delivery.SenderAddressPlace = sender.Address?.Place;
-            delivery.SenderAddressZipCode = sender.Address.ZipCode;
-            delivery.SenderAddressZipCodePlace = sender.Address.ZipCodePlace;
+            delivery.SenderAddress = sender?.Address?.AddressLine;
+            delivery.SenderAddressPlace = sender?.Address?.Place;
+            delivery.SenderAddressZipCode = sender?.Address?.ZipCode;
+            delivery.SenderAddressZipCodePlace = sender?.Address?.ZipCodePlace;
             delivery.SenderAddressCountryCode = sender?.Address?.CountryCode;
         }
 
         public void AddReceiver(Persistence.Entities.Delivery delivery, ReceiverModel receiver)
         {
-            if (receiver == null) return;
+            if (receiver is null) return;
 
             delivery.ReceiverName = receiver.Name;
 
-            if (receiver?.Contact == null) return;
+            if (receiver?.Contact is null) return;
 
             delivery.ReceiverContactName = receiver?.Contact?.Name;
             delivery.ReceiverContactPhoneNumber = receiver?.Contact?.PhoneNumber;
             delivery.ReceiverContactEmail = receiver?.Contact?.Email;
 
-            if (receiver?.Address == null) return;
+            if (receiver?.Address is null) return;
 
-            delivery.ReceiverAddress = receiver.Address.AddressLine;
-            delivery.ReceiverAddressPlace = receiver.Address?.Place;
-            delivery.ReceiverAddressZipCode = receiver.Address.ZipCode;
-            delivery.ReceiverAddressZipCodePlace = receiver.Address.ZipCodePlace;
+            delivery.ReceiverAddress = receiver?.Address?.AddressLine;
+            delivery.ReceiverAddressPlace = receiver?.Address?.Place;
+            delivery.ReceiverAddressZipCode = receiver?.Address?.ZipCode;
+            delivery.ReceiverAddressZipCodePlace = receiver?.Address?.ZipCodePlace;
             delivery.ReceiverAddressCountryCode = receiver?.Address?.CountryCode;
         }
 

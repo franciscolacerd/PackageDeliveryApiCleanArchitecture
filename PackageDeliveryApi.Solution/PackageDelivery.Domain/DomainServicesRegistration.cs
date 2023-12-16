@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using PackageDelivery.Domain.Builders;
+using PackageDelivery.Domain.Common;
 using PackageDelivery.Domain.Contracts.Persistence;
 using PackageDelivery.Domain.DomainModels.Delivery;
 using PackageDelivery.Domain.Repositories;
@@ -35,7 +36,7 @@ namespace PackageDelivery.Domain
 
             services.AddScoped<IPackageRepository, PackageRepository>();
 
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IUnitOfWork, UnitOfWork.UnitOfWork>();
 
             services.AddHttpContextAccessor();
 

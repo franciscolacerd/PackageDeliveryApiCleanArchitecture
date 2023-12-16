@@ -1,6 +1,6 @@
 ﻿using PackageDelivery.Persistence.Common;
 
-namespace PackageDelivery.Persistence.SmartEnums
+namespace PackageDelivery.Domain.SmartEnums
 {
     public class DeliveryAttributes : Enumeration
     {

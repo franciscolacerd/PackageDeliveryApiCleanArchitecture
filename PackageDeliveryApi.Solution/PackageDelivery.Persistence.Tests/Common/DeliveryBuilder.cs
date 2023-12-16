@@ -1,5 +1,4 @@
 ﻿using PackageDelivery.Persistence.Entities;
-using PackageDelivery.Persistence.SmartEnums;
 
 namespace PackageDelivery.Persistence.Tests.Common
 {
@@ -98,7 +97,7 @@ namespace PackageDelivery.Persistence.Tests.Common
 
             _delivery.DeliveryDeliveryAttributes.Add(new DeliveryDeliveryAttribute
             {
-                DeliveryAttributeId = DeliveryAttributes.Pod.Id
+                DeliveryAttributeId = 1
             });
             return this;
         }
@@ -112,7 +111,7 @@ namespace PackageDelivery.Persistence.Tests.Common
 
             _delivery.DeliveryDeliveryAttributes.Add(new DeliveryDeliveryAttribute
             {
-                DeliveryAttributeId = DeliveryAttributes.SameDay.Id
+                DeliveryAttributeId = 2
             });
             return this;
         }
@@ -126,7 +125,7 @@ namespace PackageDelivery.Persistence.Tests.Common
 
             _delivery.DeliveryDeliveryAttributes.Add(new DeliveryDeliveryAttribute
             {
-                DeliveryAttributeId = DeliveryAttributes.CashOnDelivery.Id
+                DeliveryAttributeId = 3
             });
             return this;
         }
