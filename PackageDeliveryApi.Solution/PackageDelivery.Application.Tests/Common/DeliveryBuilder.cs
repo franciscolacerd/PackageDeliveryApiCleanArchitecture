@@ -1,128 +1,98 @@
 ﻿using Bogus;
-using PackageDelivery.Domain.SmartEnums;
-using PackageDelivery.Persistence.Entities;
+using PackageDelivery.Domain.Models.Delivery;
 
 namespace PackageDelivery.Application.Tests.Common
 {
     public class DeliveryBuilder
     {
-        private Delivery _delivery;
-        private string _barcode;
-        private decimal _totalWeight;
+        private DeliveryModel _deliveryModel;
+
+        private Faker _faker;
 
         public DeliveryBuilder()
         {
-            this._delivery = new Delivery();
+            this._deliveryModel = new DeliveryModel();
+            this._faker = new Faker();
         }
 
-        public DeliveryBuilder WithBarcode(string barcode)
+        public DeliveryBuilder WithDetail()
         {
-            this._barcode = barcode;
-            return this;
-        }
-
-        public DeliveryBuilder WithWeight(decimal totalWeight)
-        {
-            this._totalWeight = totalWeight;
-            return this;
-        }
-
-        public DeliveryBuilder WithOneDelivery()
-        {
-            _delivery = new Faker<Delivery>()
-                .RuleFor(d => d.Amount, f => f.Random.Decimal())
-                .RuleFor(d => d.ClientReference, f => f.Company.CompanyName())
-                .RuleFor(d => d.Eta, f => f.Date.FutureOffset().ToString("yyyy-MM-ddTHH:mm:ss"))
-                .RuleFor(d => d.Instructions, f => f.Lorem.Sentence())
-                .RuleFor(d => d.NumberOfVolumes, f => f.Random.Number(1, 5))
-                .RuleFor(d => d.PreferentialPeriod, f => f.Random.Bool() ? f.Date.FutureOffset().ToString("yyyy-MM-ddTHH:mm:ss") : null)
-                .RuleFor(d => d.ReceiverAddress, f => f.Address.StreetAddress())
-                .RuleFor(d => d.ReceiverAddressCountryCode, f => f.Address.CountryCode())
-                .RuleFor(d => d.ReceiverAddressPlace, f => f.Address.City())
-                .RuleFor(d => d.ReceiverAddressZipCode, f => f.Address.ZipCode())
-                .RuleFor(d => d.ReceiverAddressZipCodePlace, f => f.Address.City())
-                .RuleFor(d => d.ReceiverClientCode, f => f.Random.AlphaNumeric(8))
-                .RuleFor(d => d.ReceiverContactEmail, f => f.Person.Email)
-                .RuleFor(d => d.ReceiverContactName, f => f.Person.FullName)
-                .RuleFor(d => d.ReceiverContactPhoneNumber, f => f.Person.Phone)
-                .RuleFor(d => d.ReceiverFixedInstructions, f => f.Lorem.Sentence())
-                .RuleFor(d => d.ReceiverName, f => f.Person.FullName)
-                .RuleFor(d => d.SenderAddress, f => f.Address.StreetAddress())
-                .RuleFor(d => d.SenderAddressCountryCode, f => f.Address.CountryCode())
-                .RuleFor(d => d.SenderAddressPlace, f => f.Address.City())
-                .RuleFor(d => d.SenderAddressZipCode, f => f.Address.ZipCode())
-                .RuleFor(d => d.SenderAddressZipCodePlace, f => f.Address.City())
-                .RuleFor(d => d.SenderClientCode, f => f.Random.AlphaNumeric(8))
-                .RuleFor(d => d.SenderContactEmail, f => f.Person.Email)
-                .RuleFor(d => d.SenderContactName, f => f.Person.FullName)
-                .RuleFor(d => d.SenderContactPhoneNumber, f => f.Person.Phone)
-                .RuleFor(d => d.SenderName, f => f.Person.FullName)
-                .RuleFor(d => d.BarCode, f => _barcode)
-                .RuleFor(d => d.TotalWeightOfVolumes, f => _totalWeight)
-                .Generate();
-
-            return this;
-        }
-
-        public DeliveryBuilder WithTwoPackages()
-        {
-            _delivery.Packages = new Faker<Package>()
-                .RuleFor(p => p.Height, f => 2)
-                .RuleFor(p => p.Length, f => 2)
-                .RuleFor(p => p.PackageBarCode, f => $"{_barcode}{f.Random.Number(1, 999):D3}")
-                .RuleFor(p => p.PackageNumber, f => f.UniqueIndex + 1)
-                .RuleFor(p => p.Weight, f => _totalWeight / 2)
-                .RuleFor(p => p.Width, f => 2)
-                .Generate(2);
-
-            return this;
-        }
-
-        public DeliveryBuilder WithPod()
-        {
-            if (_delivery.DeliveryDeliveryAttributes is null)
+            this._deliveryModel.Details = new DetailsModel
             {
-                _delivery.DeliveryDeliveryAttributes = new List<DeliveryDeliveryAttribute>();
-            }
+                ClientReference = this._faker.Random.AlphaNumeric(6),
+                NumberOfVolumes = this._faker.Random.Number(1, 5),
+                TotalWeightOfVolumes = this._faker.Random.Decimal(1, 50),
+                Amount = this._faker.Random.Decimal(50, 200),
+                Instructions = this._faker.Lorem.Sentence(),
+                PreferentialPeriod = this._faker.PickRandom(new[] { "Morning", "Afternoon", "Evening" })
+            };
 
-            _delivery.DeliveryDeliveryAttributes.Add(new DeliveryDeliveryAttribute
-            {
-                DeliveryAttributeId = DeliveryAttributes.Pod.Id
-            });
             return this;
         }
 
-        public DeliveryBuilder WithSameDay()
+        public DeliveryBuilder WithSender()
         {
-            if (_delivery.DeliveryDeliveryAttributes is null)
+            this._deliveryModel.Sender = new SenderModel
             {
-                _delivery.DeliveryDeliveryAttributes = new List<DeliveryDeliveryAttribute>();
-            }
+                Name = this._faker.Person.FullName,
+                Contact = new ContactModel
+                {
+                    Name = this._faker.Person.FullName,
+                    PhoneNumber = this._faker.Person.Phone,
+                    Email = this._faker.Person.Email
+                },
+                Address = new AddressModel
+                {
+                    AddressLine = this._faker.Address.StreetAddress(),
+                    Place = this._faker.Address.City(),
+                    ZipCode = this._faker.Address.ZipCode(),
+                    ZipCodePlace = this._faker.Address.City(),
+                    CountryCode = this._faker.Address.CountryCode()
+                }
+            };
 
-            _delivery.DeliveryDeliveryAttributes.Add(new DeliveryDeliveryAttribute
-            {
-                DeliveryAttributeId = DeliveryAttributes.SameDay.Id
-            });
             return this;
         }
 
-        public DeliveryBuilder WithCashOnDelivery()
+        public DeliveryBuilder WithReceiver()
         {
-            if (_delivery.DeliveryDeliveryAttributes is null)
+            this._deliveryModel.Receiver = new ReceiverModel
             {
-                _delivery.DeliveryDeliveryAttributes = new List<DeliveryDeliveryAttribute>();
-            }
+                Name = this._faker.Person.FullName,
+                Contact = new ContactModel
+                {
+                    Name = this._faker.Person.FullName,
+                    PhoneNumber = this._faker.Person.Phone,
+                    Email = this._faker.Person.Email
+                },
+                Address = new AddressModel
+                {
+                    AddressLine = this._faker.Address.StreetAddress(),
+                    Place = this._faker.Address.City(),
+                    ZipCode = this._faker.Address.ZipCode(),
+                    ZipCodePlace = this._faker.Address.City(),
+                    CountryCode = this._faker.Address.CountryCode()
+                }
+            };
 
-            _delivery.DeliveryDeliveryAttributes.Add(new DeliveryDeliveryAttribute
-            {
-                DeliveryAttributeId = DeliveryAttributes.CashOnDelivery.Id
-            });
             return this;
         }
 
-        public Delivery Build()
+        public DeliveryBuilder WithAttributes()
         {
-            return _delivery;
+            this._deliveryModel.Attributes =  new AttributesModel
+            {
+                Pod = this._faker.Random.Bool(),
+                SameDay = this._faker.Random.Bool(),
+                CashOnDelivery = this._faker.Random.Bool()
+            };
+
+            return this;
+        }
+
+        public DeliveryModel Build()
+        {
+            return _deliveryModel;
         }
     }
 }

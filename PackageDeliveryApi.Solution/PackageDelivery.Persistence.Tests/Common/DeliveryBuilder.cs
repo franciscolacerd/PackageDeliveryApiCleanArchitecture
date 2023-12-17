@@ -35,7 +35,7 @@ namespace PackageDelivery.Persistence.Tests.Common
                 .RuleFor(d => d.Eta, f => f.Date.FutureOffset().ToString("yyyy-MM-ddTHH:mm:ss"))
                 .RuleFor(d => d.Instructions, f => f.Lorem.Sentence())
                 .RuleFor(d => d.NumberOfVolumes, f => f.Random.Number(1, 5))
-                .RuleFor(d => d.PreferentialPeriod, f => f.Random.Bool() ? f.Date.FutureOffset().ToString("yyyy-MM-ddTHH:mm:ss") : null)
+                .RuleFor(d => d.PreferentialPeriod, f => f.Random.Bool() ? f.PickRandom(new[] { "Morning", "Afternoon", "Evening" }) : null)
                 .RuleFor(d => d.ReceiverAddress, f => f.Address.StreetAddress())
                 .RuleFor(d => d.ReceiverAddressCountryCode, f => f.Address.CountryCode())
                 .RuleFor(d => d.ReceiverAddressPlace, f => f.Address.City())
