@@ -2,7 +2,7 @@
 using PackageDelivery.Domain.SmartEnums;
 using PackageDelivery.Persistence.Entities;
 
-namespace PackageDelivery.Persistence.Tests.Common
+namespace PackageDelivery.Application.Tests.Common
 {
     public class DeliveryBuilder
     {
