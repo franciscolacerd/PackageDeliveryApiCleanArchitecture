@@ -4,8 +4,6 @@ namespace PackageDelivery.Domain.DomainModels.Delivery
 {
     public interface IDeliveryDomainModel
     {
-        void AddUser(string user);
-
         void AddAttributes(Persistence.Entities.Delivery delivery, AttributesModel attributes);
 
         void AddBarcode(Persistence.Entities.Delivery delivery);

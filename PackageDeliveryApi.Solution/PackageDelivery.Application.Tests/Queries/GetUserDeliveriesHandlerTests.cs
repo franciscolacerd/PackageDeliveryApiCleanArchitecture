@@ -31,7 +31,7 @@ namespace PackageDelivery.Application.Tests.Queries
         public async Task Should_CreateDelivery_ReturnSuccessTrue()
         {
             //arranje
-            var request = new GetUserDeliveriesRequest(1);
+            var request = new GetUserDeliveriesRequest();
 
             //act
             var result = await _handler.Handle(request, CancellationToken.None);

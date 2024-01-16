@@ -29,4 +29,10 @@
     <ProjectReference Include="..\PackageDelivery.Persistence\PackageDelivery.Persistence.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

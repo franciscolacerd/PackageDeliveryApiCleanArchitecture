@@ -1,4 +1,4 @@
-﻿using PackageDelivery.Persistence.Common;
+﻿using PackageDelivery.Domain.Common;
 
 namespace PackageDelivery.Domain.SmartEnums
 {

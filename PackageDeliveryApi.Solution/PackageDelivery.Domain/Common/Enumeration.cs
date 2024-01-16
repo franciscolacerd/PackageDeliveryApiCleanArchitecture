@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace PackageDelivery.Persistence.Common
+namespace PackageDelivery.Domain.Common
 {
     /// <summary>
     /// Use enumeration classes instead of enum types

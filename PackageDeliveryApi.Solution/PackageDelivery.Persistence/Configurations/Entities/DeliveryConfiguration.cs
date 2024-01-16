@@ -200,6 +200,17 @@ namespace PackageDelivery.Persistence.Configurations.Entities
                 .HasColumnName("ETA")
                 .HasColumnType("nvarchar(100)")
                 .HasMaxLength(100);
+
+            builder.Property(t => t.UserId)
+                .IsRequired()
+                .HasColumnName("UserId")
+                .HasColumnType("int");
+
+            //relationships
+            builder.HasOne(t => t.User)
+                .WithMany(t => t.Deliveries)
+                .HasForeignKey(d => d.UserId)
+                .HasConstraintName("FK_Users_Deliveries_UserId");
         }
     }
 }

@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using PackageDelivery.Api.Models;
+using PackageDelivery.Domain.Constants.Structs;
 using PackageDelivery.Infrastructure.CrossCuttingConcerns.FaultTolerance;
 using PackageDelivery.Persistence.Stores;
 using Polly;
@@ -105,8 +106,13 @@ namespace PackageDelivery.Api.Middleware
                       {
                           return await Task.FromResult<ClaimsIdentity>(null);
                       }
+                      var claimsIdentity = new ClaimsIdentity(new GenericIdentity(username, "Token"));
 
-                      return await Task.FromResult(new ClaimsIdentity(new GenericIdentity(username, "Token")));
+                      claimsIdentity.AddClaim(new Claim(ClaimTypes.Name, username));
+                      claimsIdentity.AddClaim(new Claim(ClaimTypes.Email, user.Email));
+                      claimsIdentity.AddClaim(new Claim(CustomClaims.UserId, user.Id.ToString()));
+
+                      return await Task.FromResult(claimsIdentity);
                   });
             }
             catch (Exception ex)

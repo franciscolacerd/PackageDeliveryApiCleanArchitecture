@@ -33,8 +33,6 @@ public class DeliveryController : ControllerBase
     {
         try
         {
-            delivery.Username = this.HttpContext?.User?.Identity?.Name ?? "system";
-
             return Ok(await this._mediator.Send(delivery));
         }
         catch (Exception ex)

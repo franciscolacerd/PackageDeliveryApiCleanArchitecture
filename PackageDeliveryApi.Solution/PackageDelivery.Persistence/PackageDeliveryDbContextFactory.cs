@@ -9,6 +9,10 @@ namespace PackageDelivery.Persistence
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
 
+        public PackageDeliveryDbContextFactory()
+        {
+        }
+
         public PackageDeliveryDbContextFactory(IHttpContextAccessor httpContextAccessor)
         {
             this._httpContextAccessor = httpContextAccessor;

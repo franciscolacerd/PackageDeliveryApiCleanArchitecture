@@ -5,11 +5,9 @@ namespace PackageDelivery.Application.Features.Delivery.Requests.Queries
 {
     public class GetUserDeliveriesRequest : IRequest<UserDeliveriesResponse>
     {
-        public GetUserDeliveriesRequest(int userId)
+        //TODO: implement pagination
+        public GetUserDeliveriesRequest()
         {
-            UserId = userId;
         }
-
-        public int UserId { get; set; }
     }
 }

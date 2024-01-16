@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PackageDelivery.Persistence;
 
@@ -11,9 +12,11 @@ using PackageDelivery.Persistence;
 namespace PackageDelivery.Persistence.Migrations
 {
     [DbContext(typeof(PackageDeliveryDbContext))]
-    partial class PackageDeliveryDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240116143204_userid_at_delivery")]
+    partial class userid_at_delivery
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -399,8 +402,6 @@ namespace PackageDelivery.Persistence.Migrations
                     b.HasIndex("SenderAddress");
 
                     b.HasIndex("SenderContactPhoneNumber");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Deliveries", "dbo");
                 });
@@ -838,18 +839,6 @@ namespace PackageDelivery.Persistence.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("PackageDelivery.Persistence.Entities.Delivery", b =>
-                {
-                    b.HasOne("PackageDelivery.Persistence.Entities.User", "User")
-                        .WithMany("Deliveries")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("FK_Users_Deliveries_UserId");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("PackageDelivery.Persistence.Entities.DeliveryDeliveryAttribute", b =>
                 {
                     b.HasOne("PackageDelivery.Persistence.Entities.DeliveryAttribute", "DeliveryAttribute")
@@ -933,11 +922,6 @@ namespace PackageDelivery.Persistence.Migrations
             modelBuilder.Entity("PackageDelivery.Persistence.Entities.Package", b =>
                 {
                     b.Navigation("Events");
-                });
-
-            modelBuilder.Entity("PackageDelivery.Persistence.Entities.User", b =>
-                {
-                    b.Navigation("Deliveries");
                 });
 #pragma warning restore 612, 618
         }

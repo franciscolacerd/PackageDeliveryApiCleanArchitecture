@@ -53,7 +53,6 @@ public class CreateDeliveryCommandHandler : IRequestHandler<CreateDeliveryComman
         }
 
         var entity = this._deliveryBuilder
-                          .WithUser(request.Username)
                           .WithDetails(delivery.Details)
                           .WithSender(delivery.Sender)
                           .WithReceiver(delivery.Receiver)

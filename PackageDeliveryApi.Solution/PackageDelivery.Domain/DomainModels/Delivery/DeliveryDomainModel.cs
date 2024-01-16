@@ -1,19 +1,18 @@
-﻿using PackageDelivery.Domain.Extensions;
+﻿using Microsoft.AspNetCore.Http;
+using PackageDelivery.Domain.Common;
+using PackageDelivery.Domain.Extensions;
 using PackageDelivery.Domain.Models.Delivery;
 using PackageDelivery.Domain.SmartEnums;
 using PackageDelivery.Persistence.Entities;
 
 namespace PackageDelivery.Domain.DomainModels.Delivery
 {
-    public class DeliveryDomainModel : IDeliveryDomainModel
+    public class DeliveryDomainModel : BaseIdentityProvider, IDeliveryDomainModel
     {
-        private readonly DateTime _datetimeUtc = DateTime.UtcNow;
+        //private readonly DateTime _datetimeUtc = DateTime.UtcNow;
 
-        private string _user = string.Empty;
-
-        public void AddUser(string user)
+        public DeliveryDomainModel(IHttpContextAccessor httpContextAccessor) : base(httpContextAccessor)
         {
-            this._user = user;
         }
 
         public void AddAttributes(Persistence.Entities.Delivery delivery, AttributesModel attributes)
@@ -22,7 +21,7 @@ namespace PackageDelivery.Domain.DomainModels.Delivery
 
             var deliveryAttributes = new List<DeliveryDeliveryAttribute>();
 
-            foreach (var attributeId in Persistence.Common.Enumeration
+            foreach (var attributeId in Enumeration
                                         .GetAll<DeliveryAttributes>()
                                         .Select(attribute => attribute.Id))
             {
@@ -41,8 +40,8 @@ namespace PackageDelivery.Domain.DomainModels.Delivery
                     deliveryAttributes.Add(new DeliveryDeliveryAttribute
                     {
                         DeliveryAttributeId = attributeId,
-                        CreatedBy = this._user,
-                        CreatedDateUtc = this._datetimeUtc
+                        //CreatedBy = this.Username,
+                        //CreatedDateUtc = this._datetimeUtc
                     });
                 }
             }
@@ -60,8 +59,9 @@ namespace PackageDelivery.Domain.DomainModels.Delivery
             delivery.Amount =  details.Amount;
             delivery.Instructions =  details.Instructions;
             delivery.PreferentialPeriod =  details.PreferentialPeriod;
-            delivery.CreatedBy = this._user;
-            delivery.CreatedDateUtc = this._datetimeUtc;
+            //delivery.CreatedBy = this.Username;
+            //delivery.CreatedDateUtc = this._datetimeUtc;
+            delivery.UserId = this.UserId;
         }
 
         public void AddSender(Persistence.Entities.Delivery delivery, SenderModel sender)
@@ -121,8 +121,8 @@ namespace PackageDelivery.Domain.DomainModels.Delivery
             {
                 delivery.Packages.Add(new Package
                 {
-                    CreatedBy = this._user,
-                    CreatedDateUtc = this._datetimeUtc,
+                    //CreatedBy = this.Username,
+                    //CreatedDateUtc = this._datetimeUtc,
                     Weight = weight,
                     PackageNumber = i,
                     PackageBarCode = $"{delivery.BarCode}{i.ToString().PadLeft(3, '0')}"
@@ -136,8 +136,8 @@ namespace PackageDelivery.Domain.DomainModels.Delivery
             {
                 new Event
                 {
-                    CreatedBy = this._user,
-                    CreatedDateUtc = this._datetimeUtc,
+                    //CreatedBy = this.Username,
+                    //CreatedDateUtc = this._datetimeUtc,
                     EventTypeId = EventTypes.CreatedDelivery.Id
                 }
             };

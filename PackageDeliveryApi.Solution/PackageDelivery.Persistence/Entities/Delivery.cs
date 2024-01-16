@@ -11,6 +11,8 @@ namespace PackageDelivery.Persistence.Entities
             Events = new HashSet<Event>();
         }
 
+        public int UserId { get; set; }
+
         public string? ClientReference { get; set; }
         public int NumberOfVolumes { get; set; }
         public decimal TotalWeightOfVolumes { get; set; }
@@ -43,5 +45,7 @@ namespace PackageDelivery.Persistence.Entities
         public virtual ICollection<Package> Packages { get; set; }
         public virtual ICollection<DeliveryDeliveryAttribute> DeliveryDeliveryAttributes { get; set; }
         public virtual ICollection<Event> Events { get; set; }
+
+        public virtual User User { get; set; }
     }
 }

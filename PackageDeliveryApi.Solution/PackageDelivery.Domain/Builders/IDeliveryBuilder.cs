@@ -5,8 +5,6 @@ namespace PackageDelivery.Domain.Builders
 {
     public interface IDeliveryBuilder
     {
-        DeliveryBuilder WithUser(string user);
-
         DeliveryBuilder WithDetails(DetailsModel details);
 
         DeliveryBuilder WithSender(SenderModel sender);

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using PackageDelivery.Api.Models;
+using PackageDelivery.Domain.Constants;
 using PackageDelivery.Domain.Exceptions;
 using System.Text;
 
@@ -15,7 +16,7 @@ namespace PackageDelivery.Api.Startup
             string environmentName)
         {
             if (configuration is null)
-                throw new NullConfigurationException("Configuration is null.");
+                throw new NullConfigurationException(ExceptionMessages.NullConfigurationException);
 
             var signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(configuration?.GetSection("TokenProviderSettings:SecretKey")?.Value));
 

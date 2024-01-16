@@ -8,5 +8,7 @@ namespace PackageDelivery.Persistence.Entities
         public string CreatedBy { get; set; } = null!;
         public DateTime? UpdatedDateUtc { get; set; }
         public string? UpdatedBy { get; set; }
+
+        public virtual ICollection<Delivery> Deliveries { get; set; } = null!;
     }
 }

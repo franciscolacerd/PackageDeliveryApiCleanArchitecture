@@ -3,12 +3,12 @@ using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using PackageDelivery.Application.Features.Delivery.Requests.Commands;
 using PackageDelivery.Application.Responses;
+using PackageDelivery.Application.Tests.Common;
 using PackageDelivery.Application.Tests.Strapper;
-using PackageDelivery.Domain.Models.Delivery;
 
 namespace PackageDelivery.Application.Tests.Commands
 {
-    public class CreateDeliveryCommandHandlerTests
+    public class CreateDeliveryCommandHandlerTests : BaseTest
     {
         private ServiceProvider _serviceProvider;
 
@@ -32,7 +32,7 @@ namespace PackageDelivery.Application.Tests.Commands
         public async Task Should_CreateDelivery_ReturnSuccessTrue()
         {
             //arranje
-            var delivery = new DeliveryModel();
+            var delivery = Build();
 
             //act
             var result = await _handler.Handle(new CreateDeliveryCommand(delivery), CancellationToken.None);

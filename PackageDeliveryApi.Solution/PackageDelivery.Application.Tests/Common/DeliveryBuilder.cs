@@ -83,8 +83,8 @@ namespace PackageDelivery.Application.Tests.Common
             this._deliveryModel.Attributes =  new AttributesModel
             {
                 Pod = this._faker.Random.Bool(),
-                SameDay = this._faker.Random.Bool(),
-                CashOnDelivery = this._faker.Random.Bool()
+                SameDay = false,
+                CashOnDelivery = true
             };
 
             return this;

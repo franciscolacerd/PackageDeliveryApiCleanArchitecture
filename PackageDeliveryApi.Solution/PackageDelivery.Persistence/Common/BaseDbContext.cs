@@ -9,6 +9,10 @@ namespace PackageDelivery.Persistence.Common
     {
         private const string defaultUsername = "SYSTEM";
 
+        public BaseDbContext()
+        {
+        }
+
         public BaseDbContext(DbContextOptions options) : base(options)
         {
         }
