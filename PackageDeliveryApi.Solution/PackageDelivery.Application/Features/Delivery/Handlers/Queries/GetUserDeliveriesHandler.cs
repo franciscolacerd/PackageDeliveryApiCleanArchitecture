@@ -20,7 +20,7 @@ namespace PackageDelivery.Application.Features.Delivery.Handlers.Queries
 
         public async Task<UserDeliveriesResponse> Handle(GetUserDeliveriesRequest request, CancellationToken cancellationToken)
         {
-            var result = await this._unitOfWork.DeliveryRepository.QueryAsync(x => x.UserId == this.UserId);
+            var result = await this._unitOfWork.DeliveryRepository.QueryAsync(request.Page, request.PageSize, x => x.UserId == this.UserId);
 
             if (result is null)
                 throw new WithoutDeliveriesExceptions(string.Format(ExceptionMessages.WithoutDeliveriesExceptions, this.UserId));

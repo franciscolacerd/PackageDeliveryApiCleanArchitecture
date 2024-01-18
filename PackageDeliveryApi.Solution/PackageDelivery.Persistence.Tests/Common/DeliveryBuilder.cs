@@ -59,6 +59,7 @@ namespace PackageDelivery.Persistence.Tests.Common
                 .RuleFor(d => d.SenderName, f => f.Person.FullName)
                 .RuleFor(d => d.BarCode, f => _barcode)
                 .RuleFor(d => d.TotalWeightOfVolumes, f => _totalWeight)
+                .RuleFor(d => d.UserId, f => 2)
                 .Generate();
 
             return this;

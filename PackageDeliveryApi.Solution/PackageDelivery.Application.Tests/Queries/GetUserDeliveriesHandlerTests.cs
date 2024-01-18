@@ -31,7 +31,7 @@ namespace PackageDelivery.Application.Tests.Queries
         public async Task Should_CreateDelivery_ReturnSuccessTrue()
         {
             //arranje
-            var request = new GetUserDeliveriesRequest();
+            var request = new GetUserDeliveriesRequest(1, 10);
 
             //act
             var result = await _handler.Handle(request, CancellationToken.None);
@@ -43,6 +43,8 @@ namespace PackageDelivery.Application.Tests.Queries
             result.Should().BeOfType<UserDeliveriesResponse>();
 
             result.Success.Should().BeTrue();
+
+            result.Deliveries.Results.Should().HaveCount(10);
         }
     }
 }

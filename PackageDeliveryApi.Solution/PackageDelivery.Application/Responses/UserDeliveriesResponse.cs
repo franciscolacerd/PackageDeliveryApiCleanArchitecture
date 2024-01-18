@@ -1,9 +1,10 @@
 ﻿using PackageDelivery.Application.Responses.Common;
-using PackageDelivery.Persistence.Entities;
+using PackageDelivery.Domain.DTOs;
+using PackageDelivery.Domain.Models.Pagination;
 
 namespace PackageDelivery.Application.Responses;
 
 public class UserDeliveriesResponse : BaseCommandResponse
 {
-    public IReadOnlyList<Delivery> Deliveries { get; set; }
+    public PagedResult<DeliveryDto> Deliveries { get; set; }
 }
