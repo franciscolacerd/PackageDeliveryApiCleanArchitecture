@@ -25,7 +25,7 @@ namespace PackageDelivery.Persistence.Tests
         }
 
         [Test]
-        public async Task Package_PackageGetById_ReturnPackageWithDeliveryAsync()
+        public async Task Should_PackageGetById_ReturnPackageWithDeliveryAsync()
         {
             var dummyDelivery = await GetAndAssertDeliveryAsync();
 
